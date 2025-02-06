@@ -32,10 +32,11 @@ jobs:
           npm run build
         env:
           CI: false
+          PUBLIC_URL: https://sheep52031.github.io
           
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          branch: gh-pages
+          branch: main
           folder: frontend/build
           clean: true 

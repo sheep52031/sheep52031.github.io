@@ -2,7 +2,7 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://sheep52031.github.io/sheep52031.github.io",
+  "homepage": "https://sheep52031.github.io",
   "dependencies": {
     "@headlessui/react": "^1.7.19",
     "@testing-library/jest-dom": "^5.17.0",
