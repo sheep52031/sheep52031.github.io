@@ -61,7 +61,7 @@ export const projects = [
     # Project Outcomes
     The project successfully merges AI image recognition with an interactive real-time platform, delivering an innovative and user-friendly tourism service that not only informs but also engages visitors. The system's scalable architecture enables potential future applications in smart pet door systems, interactive gaming experiences, and industrial defect detection.
     `,
-    image: "/images/projects/cat-recognition/cat-recognition_cover.png",
+    image: "/images/projects/cat-recognition/cats_test_music.gif",
     technologies: ["Python", "YOLOv7", "FastAPI", "Flask", "LINE API", "Docker", "GCP", "MongoDB"],
     demoLink: "https://www.youtube.com/embed/Eq3Okb1ZOJg",
     githubLink: "https://github.com/sheep52031/meowda",
@@ -72,6 +72,14 @@ export const projects = [
       {
         url: "/images/projects/cat-recognition/cat-recognition_infra.png",
         caption: "System Infrastructure"
+      },
+      {
+        url: "/images/projects/cat-recognition/cat23_008-.JPG",
+        caption: "Cat Recognition Example 1"
+      },
+      {
+        url: "/images/projects/cat-recognition/cat23_054-.JPG",
+        caption: "Cat Recognition Example 2"
       }
     ]
   },
