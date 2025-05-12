@@ -1,5 +1,4 @@
 
-import 'server-only'; // Ensures this module is only used on the server
 import type { Locale } from './i18n-config';
 
 // Define a type for our dictionary. This helps with type safety.
@@ -18,3 +17,4 @@ export const getDictionary = async (locale: Locale): Promise<Dictionary> => {
   // Default to English if locale is not supported or is 'en'
   return dictionaries.en();
 };
+

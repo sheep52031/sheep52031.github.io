@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from 'next/link';
@@ -6,27 +7,32 @@ import { useLanguage } from '@/hooks/use-language';
 import LanguageSwitcher from '@/components/language-switcher';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { Menu, Download, Briefcase, Home, GraduationCap, Code, MessageSquare, UserCircle } from 'lucide-react';
-import { useState } from 'react';
+import { Menu, Download, User, BookUser, Briefcase } from 'lucide-react'; // User for Resume, BookUser for Autobiography
+import { useState, useEffect } from 'react';
 
-export default function Header() {
+interface HeaderProps {
+  appName: string;
+}
+
+export default function Header({ appName }: HeaderProps) {
   const { dictionary, locale } = useLanguage();
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navLinks = [
-    { href: '#summary', label: dictionary.resume.summaryTitle, icon: <UserCircle className="h-5 w-5" /> },
-    { href: '#experience', label: dictionary.nav.experience, icon: <Briefcase className="h-5 w-5" /> },
-    { href: '#education', label: dictionary.nav.education, icon: <GraduationCap className="h-5 w-5" /> },
-    { href: '#skills', label: dictionary.nav.skills, icon: <Code className="h-5 w-5" /> },
-    { href: '#projects', label: dictionary.nav.projects, icon: <Briefcase className="h-5 w-5" /> },
-    { href: '#contact', label: dictionary.nav.contact, icon: <MessageSquare className="h-5 w-5" /> },
+    { href: `/${locale}/resume`, label: dictionary.nav.resume, icon: <User className="h-5 w-5" /> },
+    { href: `/${locale}/autobiography`, label: dictionary.nav.autobiography, icon: <BookUser className="h-5 w-5" /> },
+    { href: `/${locale}/portfolio`, label: dictionary.nav.portfolio, icon: <Briefcase className="h-5 w-5" /> },
   ];
 
+  // Function to determine if a link is active
+  // Considers if the current pathname starts with the link's href
+  const isActive = (href: string) => {
+    // For exact matches or if pathname starts with the href (e.g. /en/resume matches /en/resume/details)
+    return pathname === href || pathname.startsWith(href + (href.endsWith('/') ? '' : '/'));
+  };
+  
   const handleDownloadPdf = () => {
-    // Placeholder for PDF download functionality
-    // In a real app, you'd use a library like html2canvas and jspdf
-    // to capture the page content and generate a PDF.
     alert(dictionary.header.downloadPdf + ' functionality is a placeholder. Resume content would be captured and converted to PDF.');
     console.log("Attempting to download PDF for locale:", locale);
   };
@@ -38,10 +44,14 @@ export default function Header() {
           key={link.href}
           variant="ghost"
           asChild
-          className={`justify-start transition-colors hover:text-accent-foreground hover:bg-accent/80 ${isMobile ? 'w-full text-lg py-3' : 'text-sm'}`}
+          className={`
+            justify-start transition-colors 
+            ${isMobile ? 'w-full text-lg py-3' : 'text-sm px-3 py-2'}
+            ${isActive(link.href) ? 'text-primary font-semibold bg-accent/10 hover:bg-accent/20' : 'hover:text-primary hover:bg-accent/10'}
+          `}
           onClick={() => isMobile && setMobileMenuOpen(false)}
         >
-          <Link href={`/${locale}${link.href}`}>
+          <Link href={link.href}>
             {isMobile && link.icon && <span className="mr-2">{link.icon}</span>}
             {link.label}
           </Link>
@@ -53,8 +63,8 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 shadow-sm">
       <div className="container mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Link href={`/${locale}`} className="text-2xl font-bold text-primary hover:opacity-80 transition-opacity" aria-label={dictionary.appName}>
-          {dictionary.appName}
+        <Link href={`/${locale}/resume`} className="text-2xl font-bold text-primary hover:opacity-80 transition-opacity" aria-label={appName}>
+          {appName}
         </Link>
 
         {/* Desktop Navigation */}
@@ -62,36 +72,35 @@ export default function Header() {
           <NavLinkItems />
         </nav>
 
-        <div className="flex items-center space-x-2 md:space-x-4">
+        <div className="flex items-center space-x-2">
           <LanguageSwitcher />
-          <Button
-            onClick={handleDownloadPdf}
-            variant="outline"
-            size="icon"
-            aria-label={dictionary.header.downloadPdf}
-            className="border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-colors"
-          >
-            <Download className="h-5 w-5" />
-          </Button>
-
+          {/* Download PDF button is removed from header as per new design (moved to contact card) */}
           {/* Mobile Navigation Trigger */}
           <div className="md:hidden">
             <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
               <SheetTrigger asChild>
-                <Button variant="ghost" size="icon" aria-label="Open menu">
+                <Button variant="ghost" size="icon" aria-label={dictionary.header.openMenu}>
                   <Menu className="h-6 w-6" />
                 </Button>
               </SheetTrigger>
               <SheetContent side="right" className="w-full max-w-xs p-6 bg-background">
                 <div className="flex flex-col space-y-4">
                   <Link 
-                    href={`/${locale}`} 
+                    href={`/${locale}/resume`} 
                     className="text-xl font-bold text-primary mb-4 self-start"
                     onClick={() => setMobileMenuOpen(false)}
                   >
-                    {dictionary.appName}
+                    {appName}
                   </Link>
                   <NavLinkItems isMobile={true} />
+                   <Button
+                      onClick={handleDownloadPdf}
+                      variant="outline"
+                      className="w-full mt-4 border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-colors"
+                    >
+                      <Download className="h-5 w-5 mr-2" />
+                      {dictionary.header.downloadPdf}
+                    </Button>
                 </div>
               </SheetContent>
             </Sheet>

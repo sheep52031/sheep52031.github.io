@@ -1,7 +1,10 @@
 
 {
-  "appName": "Bilingual Resume",
+  "appName": "John Doe",
   "nav": {
+    "resume": "Resume",
+    "autobiography": "Autobiography",
+    "portfolio": "Portfolio",
     "home": "Home",
     "experience": "Experience",
     "education": "Education",
@@ -11,24 +14,40 @@
   },
   "header": {
     "downloadPdf": "Download PDF",
-    "language": "Language"
+    "language": "Language",
+    "openMenu": "Open menu"
   },
   "resume": {
     "title": "My Awesome Resume",
-    "name": "Your Name",
-    "jobTitle": "Software Engineer",
+    "name": "John Doe",
+    "jobTitle": "Senior Software Engineer",
     "summaryTitle": "Summary",
-    "experienceTitle": "Experience",
+    "experienceTitle": "Work Experience",
     "educationTitle": "Education",
     "skillsTitle": "Skills",
     "projectsTitle": "Projects",
-    "contactTitle": "Contact"
+    "contactTitle": "Contact Information",
+    "contactEmail": "Email",
+    "contactPhone": "Phone",
+    "contactLocation": "Location",
+    "contactLinkedIn": "LinkedIn",
+    "contactGitHub": "GitHub",
+    "contactPortfolio": "Portfolio"
   },
   "footer": {
-    "text": "© 2024 Your Name. All rights reserved."
+    "text": "© 2024 John Doe. All rights reserved."
   },
   "languageSwitcher": {
     "english": "English",
     "chinese": "中文 (Chinese)"
+  },
+  "autobiographyPage": {
+    "title": "Autobiography",
+    "comingSoon": "Content for the autobiography page is coming soon."
+  },
+  "portfolioPage": {
+    "title": "Portfolio",
+    "comingSoon": "Content for the portfolio page is coming soon."
   }
 }
+

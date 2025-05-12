@@ -1,7 +1,7 @@
 
 import type { Metadata } from 'next';
 import { GeistSans } from 'geist/font/sans';
-import { GeistMono } from 'geist/font/mono';
+import { GeistMono } from 'geist/font/mono'; // Corrected import path
 import './globals.css';
 // Toaster is now in LangLayout to be within LanguageProvider if needed by any toast content,
 // and to avoid potential duplicate Toaster instances if RootLayout and LangLayout both included it.
@@ -24,3 +24,4 @@ export default function RootLayout({
     </html>
   );
 }
+
