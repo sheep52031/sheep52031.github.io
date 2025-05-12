@@ -1,0 +1,34 @@
+
+{
+  "appName": "Bilingual Resume",
+  "nav": {
+    "home": "Home",
+    "experience": "Experience",
+    "education": "Education",
+    "skills": "Skills",
+    "projects": "Projects",
+    "contact": "Contact"
+  },
+  "header": {
+    "downloadPdf": "Download PDF",
+    "language": "Language"
+  },
+  "resume": {
+    "title": "My Awesome Resume",
+    "name": "Your Name",
+    "jobTitle": "Software Engineer",
+    "summaryTitle": "Summary",
+    "experienceTitle": "Experience",
+    "educationTitle": "Education",
+    "skillsTitle": "Skills",
+    "projectsTitle": "Projects",
+    "contactTitle": "Contact"
+  },
+  "footer": {
+    "text": "© 2024 Your Name. All rights reserved."
+  },
+  "languageSwitcher": {
+    "english": "English",
+    "chinese": "中文 (Chinese)"
+  }
+}

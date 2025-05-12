@@ -1,0 +1,34 @@
+
+{
+  "appName": "双语简历",
+  "nav": {
+    "home": "首页",
+    "experience": "工作经历",
+    "education": "教育背景",
+    "skills": "技能专长",
+    "projects": "项目经验",
+    "contact": "联系方式"
+  },
+  "header": {
+    "downloadPdf": "下载PDF",
+    "language": "语言"
+  },
+  "resume": {
+    "title": "我的简历",
+    "name": "你的名字",
+    "jobTitle": "软件工程师",
+    "summaryTitle": "个人总结",
+    "experienceTitle": "工作经历",
+    "educationTitle": "教育背景",
+    "skillsTitle": "技能专长",
+    "projectsTitle": "项目经验",
+    "contactTitle": "联系方式"
+  },
+  "footer": {
+    "text": "© 2024 你的名字。版权所有。"
+  },
+  "languageSwitcher": {
+    "english": "English (英文)",
+    "chinese": "中文"
+  }
+}
