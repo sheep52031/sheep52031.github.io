@@ -60,8 +60,8 @@ const resumeContent: Record<Locale, ResumeData> = {
       github: "https://github.com/sheep52031",
       githubHandle: "sheep52031",
       portfolio: "https://sheep52031.github.io/#/",
-      linkedin: "https://linkedin.com/in/jasonlin-placeholder", // Placeholder, update if available in HTML
-      linkedinHandle: "jasonlin-placeholder", // Placeholder
+      linkedin: "https://linkedin.com/in/jasonlin-placeholder", // Retained placeholder as not in new HTML
+      linkedinHandle: "jasonlin-placeholder", // Retained placeholder
     },
     summary: {
       title: "Professional Summary",
@@ -168,16 +168,16 @@ Over time, I've learned how to bridge technical challenges with real business ne
       ],
     },
     education: {
-      title: "Education & Continuous Learning", // Combined "Education" and "Continuous Learning" from HTML
+      title: "Education & Continuous Learning",
       entries: [
         {
           degree: "B.S. in Electrical Engineering",
           institution: "Fu Jen Catholic University",
           period: "2012/09 – 2016/06",
-          descriptionMarkdown: "", // No description in HTML for this entry
+          descriptionMarkdown: "", 
         },
         {
-          degree: "Intensive English Training Program", // Using this as "degree"
+          degree: "Intensive English Training Program", 
           institution: "Philippine Language School",
           period: "2023/09 – 2023/12",
           descriptionMarkdown: `
@@ -209,7 +209,7 @@ I am eager to bring my blend of technical expertise, project leadership, and dat
       `,
     },
   },
-  zh: { // Chinese content remains unchanged from previous state
+  zh: { // Chinese content remains unchanged from previous correct state
     name: "林家任 (Jason Lin)",
     jobTitle: "云解决方案工程师",
     contactDetails: {
