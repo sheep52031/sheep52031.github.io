@@ -19,11 +19,11 @@ export interface ContactDetails {
   email: string;
   phone: string;
   location: string;
-  linkedin: string;
-  linkedinHandle: string;
   github: string;
   githubHandle: string;
   portfolio?: string;
+  linkedin?: string; // Optional, will be empty based on current HTML
+  linkedinHandle?: string; // Optional
 }
 
 export interface ResumeSectionContent {
@@ -60,8 +60,8 @@ const resumeContent: Record<Locale, ResumeData> = {
       github: "https://github.com/sheep52031",
       githubHandle: "sheep52031",
       portfolio: "https://sheep52031.github.io/#/",
-      linkedin: "https://linkedin.com/in/jasonlin-placeholder", // Retained placeholder as not in new HTML
-      linkedinHandle: "jasonlin-placeholder", // Retained placeholder
+      linkedin: "", // Not in provided HTML contact details
+      linkedinHandle: "", // Not in provided HTML contact details
     },
     summary: {
       title: "Professional Summary",
@@ -209,7 +209,7 @@ I am eager to bring my blend of technical expertise, project leadership, and dat
       `,
     },
   },
-  zh: { // Chinese content remains unchanged from previous correct state
+  zh: {
     name: "林家任 (Jason Lin)",
     jobTitle: "云解决方案工程师",
     contactDetails: {
@@ -219,14 +219,16 @@ I am eager to bring my blend of technical expertise, project leadership, and dat
       github: "https://github.com/sheep52031",
       githubHandle: "sheep52031",
       portfolio: "https://sheep52031.github.io/#/",
-      linkedin: "https://linkedin.com/in/jasonlin-placeholder-zh", 
-      linkedinHandle: "jasonlin-placeholder-zh", 
+      linkedin: "", 
+      linkedinHandle: "",
     },
     summary: {
       title: "专业总结",
-      markdown: `我是⼀位在 AI 应⽤开发、云服务和系统集成⽅⾯拥有坚实背景的⼯程师。 
-      我在后端开发和 AI 模型部署⽅⾯的⼯作，使我能够与不同团队密切合作，将项⽬从概念阶段推进到成功上线。 
-      在此过程中，我学会了如何将技术挑战与实际业务需求相结合，并持续寻找机会提升⾃⼰的技术和专业能⼒，以贡献有意义的解决⽅案。`,
+      markdown: `我是一名在人工智能应用开发、云服务和系统集成方面拥有坚实背景的工程师。
+
+我在后端开发和人工智能模型部署方面的工作，使我能够与不同团队密切合作，将项目从概念阶段推进到成功上线。
+
+在此过程中，我学会了如何将技术挑战与实际业务需求相结合，并持续寻找机会提升自己的技术和专业能力，以贡献有意义的解决方案。`,
     },
     skills: {
       title: "技术技能",
@@ -235,7 +237,7 @@ I am eager to bring my blend of technical expertise, project leadership, and dat
 - Python - FastAPI
 - React - JavaScript
 
-### 机器学习与⼈⼯智能
+### 机器学习与人工智能
 - TensorFlow
 - YOLOv7
 
@@ -249,77 +251,77 @@ I am eager to bring my blend of technical expertise, project leadership, and dat
 - SQL
 - EXCEL
 
-### 语⾔能⼒
-- 中⽂：⺟语
-- 英⽂：⽇常会话流利
+### 语言能力
+- 中文：母语
+- 英文：日常会话流利
       `,
     },
     projects: {
-      title: "项⽬经验",
+      title: "项目经验",
       markdown: `
-### 外送平台 | 独⽴开发者
-*2024年09⽉ – ⾄今*
-- 设计并开发⼀个外送平台，集成会员管理、订单处理和⾃动派单功能。
-- 使⽤ FastAPI 构建后端服务，React 构建前端界⾯，并利⽤ Firebase Firestore进⾏数据管理。
-- 项⽬⽬前正在开发中；未来计划集成 AI 功能以优化运营。
-- 开发数据分析功能，⽤于监控销售趋势和客户⾏为。
+### 外送平台 | 独立开发者
+*2024年09月 – 至今*
+- 设计并开发一个外送平台，集成会员管理、订单处理和自动派单功能。
+- 使用 FastAPI 构建后端服务，React 构建前端界面，并利用 Firebase Firestore进行数据管理。
+- 项目目前正在开发中；未来计划集成 AI 功能以优化运营。
+- 开发数据分析功能，用于监控销售趋势和客户行为。
 
-### 猫咪识别系统 | 项⽬负责⼈
-*2022年11⽉ – 2023年01⽉*
-- 带领6⼈团队开发与 LINE 集成的猫咪识别服务。
+### 猫咪识别系统 | 项目负责人
+*2022年11月 – 2023年01月*
+- 带领6人团队开发与 LINE 集成的猫咪识别服务。
 - 训练 YOLOv7 模型识别猴硐猫村的14只特定猫咪，准确率超过85%。
 - 设计并实施稳健的模型训练流程，同时优化数据收集和标注过程。
-- 通过 Docker 容器化部署，确保开发与⽣产环境的⼀致性。
+- 通过 Docker 容器化部署，确保开发与生产环境的一致性。
 - 开发 RESTful API 将 AI 模型与 LINE Messaging API 集成。
       `,
     },
     experience: {
-      title: "⼯作经历",
+      title: "工作经历",
       entries: [
         {
-          role: "创始⼈兼战略投资者",
+          role: "创始人兼战略投资者",
           company: "LUMACOOL, 宿雾, 菲律宾",
-          period: "2024年01⽉ – 2025年01⽉ (预计)",
+          period: "2024年01月 – 2025年01月",
           descriptionMarkdown: `
-- 创建并管理⼀个饮料品牌，负责战略、产品开发和市场营销，同时获得跨⽂化和数据驱动的商业洞察。
-- 设计并实施⾃动化外送平台，集成会员管理和订单处理，以解决收⼊挑战。
-- 利⽤数据分析追踪销售趋势和客户⾏为，持续优化产品组合和定价策略。
-- 将⽇常运营移交给本地合作伙伴，实现向战略投资和市场开发的转型。
+- 创建并管理一个饮料品牌，负责战略、产品开发和市场营销，同时获得跨文化和数据驱动的商业洞察。
+- 设计并实施自动化外送平台，集成会员管理和订单处理，以解决收入挑战。
+- 利用数据分析追踪销售趋势和客户行为，持续优化产品组合和定价策略。
+- 将日常运营移交给本地合作伙伴，实现向战略投资和市场开发的转型。
           `,
         },
         {
-          role: "云端⼯程师",
+          role: "云端工程师",
           company: "宏碁股份有限公司 (Acer Inc.)",
-          period: "2023年02⽉ – 2023年08⽉",
+          period: "2023年02月 – 2023年08月",
           descriptionMarkdown: `
-- 为 GCP 云服务提供技术⽀持，并参与系统架构设计。
-- 协助企业客户进⾏云迁移评估和实施。
-- 与跨职能团队合作，提供稳健的多云解决⽅案。
-- 使⽤ .NET Core 框架维护云经销商计费系统。
+- 为 GCP 云服务提供技术支持，并参与系统架构设计。
+- 协助企业客户进行云迁移评估和实施。
+- 与跨职能团队合作，提供稳健的多云解决方案。
+- 使用 .NET Core 框架维护云经销商计费系统。
           `,
         },
         {
-          role: "AI 应⽤开发养成班学员",
+          role: "AI 应用开发养成班学员",
           company: "资展国际 (TibaMe Academy)",
-          period: "2022年09⽉ – 2023年01⽉",
+          period: "2022年09月 – 2023年01月",
           descriptionMarkdown: `
-- 完成500⼩时密集培训课程，涵盖数据处理（⽹络爬⾍、Matplotlib）、数据库（MySQL、MongoDB）及 AI 应⽤开发。
-- 开发多个 AI 解决⽅案，包括基于 YOLOv7 的物体检测、⼈脸识别和车牌识别，并与树莓派硬件集成。
-- 掌握 Flask 和 LineBot 的全栈开发技能，并学习使⽤ Docker 和 GCP (VM/Cloud Run)进⾏云部署策略。
+- 完成500小时密集培训课程，涵盖数据处理（网络爬虫、Matplotlib）、数据库（MySQL、MongoDB）及 AI 应用开发。
+- 开发多个 AI 解决方案，包括基于 YOLOv7 的物体检测、人脸识别和车牌识别，并与树莓派硬件集成。
+- 掌握 Flask 和 LineBot 的全栈开发技能，并学习使用 Docker 和 GCP (VM/Cloud Run)进行云部署策略。
 - 带领团队设计并开发猫咪识别服务，负责系统架构和后端开发。
 - 因表现优异荣获学习优异奖。
           `,
         },
         {
-          role: "创意总监兼项⽬经理",
-          company: "拿铁影像⼯作室 (Latte Creative Studio)",
-          period: "2019年06⽉ – 2022年08⽉",
+          role: "创意总监兼项目经理",
+          company: "拿铁影像工作室 (Latte Creative Studio)",
+          period: "2019年06月 – 2022年08月",
           descriptionMarkdown: `
 - 与 AI 影像平台 Meero 合作，制定标准化拍摄流程并优化 AI 训练数据收集。
-- 获得 UberEats 台湾商业摄影项⽬，推动超过1000家商户数字化转型进⼊外送市场。
-- 利⽤ Facebook Business Suite 和 LINE 企业⼯具，使社交媒体参与度提升300%，为某汽车租赁客户带来80%的订单转化率增长。
-- 管理桃园市政府青年事务局的活动营销项⽬，负责宣传活动和摄影记录。
-- 制作在 TVBS 新闻台播出的企业宣传影⽚，使⽉服务申请量增加50%，达成政府绩效⽬标。
+- 获得 UberEats 台湾商业摄影项目，推动超过1000家商户数字化转型进入外送市场。
+- 利用 Facebook Business Suite 和 LINE 企业工具，使社交媒体参与度提升300%，为某汽车租赁客户带来80%的订单转化率增长。
+- 管理桃园市政府青年事务局的活动营销项目，负责宣传活动和摄影记录。
+- 制作在 TVBS 新闻台播出的企业宣传影片，使月服务申请量增加50%，达成政府绩效目标。
           `,
         },
       ],
@@ -328,18 +330,18 @@ I am eager to bring my blend of technical expertise, project leadership, and dat
       title: "教育背景与持续学习",
       entries: [
         {
-          degree: "辅仁⼤学电机⼯程学系学⼠",
-          institution: "辅仁⼤学 (Fu Jen Catholic University)",
-          period: "2012年09⽉ – 2016年06⽉",
+          degree: "辅仁大学电机工程学系学士",
+          institution: "辅仁大学 (Fu Jen Catholic University)",
+          period: "2012年09月 – 2016年06月",
           descriptionMarkdown: "",
         },
         {
           degree: "密集英语培训课程",
-          institution: "菲律宾语⾔学校",
-          period: "2023年09⽉ – 2023年12⽉",
+          institution: "菲律宾语言学校",
+          period: "2023年09月 – 2023年12月",
           descriptionMarkdown: `
 - 完成密集英语培训课程，模拟雅思成绩达到5.5分。
-- 通过沉浸式语⾔学习提升跨⽂化沟通能⼒。
+- 通过沉浸式语言学习提升跨文化沟通能力。
           `,
         },
       ],
