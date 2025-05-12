@@ -47,10 +47,10 @@ export default async function ResumePage({ params }: { params: { lang: string } 
             {resumeData.jobTitle}
           </p>
           {resumeData.summary.markdown && (
-            <p className="mt-4 text-base text-foreground leading-relaxed">
+            <div className="mt-4 text-base text-foreground leading-relaxed">
               {/* Using MarkdownDisplay for the summary in case it has simple formatting like bold/italics */}
               <MarkdownDisplay content={resumeData.summary.markdown} />
-            </p>
+            </div>
           )}
         </header>
 
