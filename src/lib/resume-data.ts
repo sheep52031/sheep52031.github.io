@@ -1,4 +1,5 @@
-import type { Locale } from './i18n';
+
+import type { Locale } from './i18n-config';
 
 export interface ResumeSectionContent {
   title: string;

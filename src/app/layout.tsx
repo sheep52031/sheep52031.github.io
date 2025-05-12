@@ -1,9 +1,10 @@
+
 import type { Metadata } from 'next';
 import { GeistSans } from 'geist/font/sans';
 import { GeistMono } from 'geist/font/mono';
 import './globals.css';
-import { Toaster } from "@/components/ui/toaster";
-
+// Toaster is now in LangLayout to be within LanguageProvider if needed by any toast content,
+// and to avoid potential duplicate Toaster instances if RootLayout and LangLayout both included it.
 
 export const metadata: Metadata = {
   title: 'Bilingual Resume',
@@ -19,7 +20,6 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${GeistSans.variable} ${GeistMono.variable} font-sans antialiased`}>
         {children}
-        <Toaster />
       </body>
     </html>
   );

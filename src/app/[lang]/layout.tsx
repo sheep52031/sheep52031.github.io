@@ -1,8 +1,10 @@
+
 import type { Metadata } from 'next';
 import { LanguageProvider } from '@/contexts/language-context';
 import Header from '@/components/layout/header';
-import { getDictionary, isLocale, Locale } from '@/lib/i18n';
-import { Toaster } from '@/components/ui/toaster'; // Ensure Toaster is available
+import { getDictionary } from '@/lib/i18n'; // Dictionary type is inferred or can be imported with 'import type' if explicitly needed
+import { isLocale, type Locale } from '@/lib/i18n-config';
+import { Toaster } from '@/components/ui/toaster'; 
 
 export async function generateStaticParams() {
   return [{ lang: 'en' }, { lang: 'zh' }];
@@ -22,7 +24,7 @@ export default async function LangLayout({
   params: { lang },
 }: {
   children: React.ReactNode;
-  params: { lang: Locale };
+  params: { lang: string }; 
 }) {
   const currentLang = isLocale(lang) ? lang : 'en';
   const dictionary = await getDictionary(currentLang);
@@ -38,6 +40,7 @@ export default async function LangLayout({
           {dictionary.footer.text}
         </footer>
       </div>
+      <Toaster />
     </LanguageProvider>
   );
 }

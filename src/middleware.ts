@@ -1,17 +1,12 @@
+
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
-import { validLocales, isLocale } from '@/lib/i18n';
+import { validLocales, isLocale } from '@/lib/i18n-config';
 
 const PUBLIC_FILE = /\.(.*)$/;
 
 function getPreferredLocale(request: NextRequest): string {
-  // 1. Check for locale in cookie (if you implement storing it there)
-  // const cookieLocale = request.cookies.get('NEXT_LOCALE')?.value;
-  // if (cookieLocale && isLocale(cookieLocale)) {
-  //   return cookieLocale;
-  // }
-
-  // 2. Check Accept-Language header
+  // 1. Check Accept-Language header
   const acceptLanguage = request.headers.get('accept-language');
   if (acceptLanguage) {
     const browserLocales = acceptLanguage.split(',').map((lang) => lang.split(';')[0].toLowerCase().trim());
@@ -27,7 +22,7 @@ function getPreferredLocale(request: NextRequest): string {
     }
   }
 
-  // 3. Default locale
+  // 2. Default locale
   return 'en';
 }
 
@@ -49,14 +44,22 @@ export function middleware(request: NextRequest) {
   );
 
   if (pathnameHasLocale) {
-    return NextResponse.next();
+    // Check if the locale in path is valid, if not, redirect to preferred.
+    // This is a safeguard, normally Next.js would 404 for invalid [lang] segments based on generateStaticParams
+    const pathLocale = pathname.split('/')[1];
+    if (isLocale(pathLocale)) {
+      return NextResponse.next();
+    }
+    // If path starts with something like /xx/ where xx is not a valid locale.
   }
 
-  // Redirect if there is no locale
+  // Redirect if there is no locale or if the locale in path is invalid
   const preferredLocale = getPreferredLocale(request);
   
   // Construct the new URL with the locale prefix
-  const newUrl = new URL(`/${preferredLocale}${pathname === '/' ? '' : pathname}`, request.url);
+  // Ensure pathname starts with a slash if it's not just a locale segment
+  const newPath = pathname === '/' || !pathname.startsWith('/') ? `/${preferredLocale}` : `/${preferredLocale}${pathname}`;
+  const newUrl = new URL(newPath, request.url);
   
   return NextResponse.redirect(newUrl);
 }

@@ -1,4 +1,6 @@
-import { getDictionary, isLocale, Locale } from '@/lib/i18n';
+
+import { getDictionary } from '@/lib/i18n';
+import { isLocale, type Locale } from '@/lib/i18n-config';
 import { getResumeData } from '@/lib/resume-data';
 import ResumeSection from '@/components/resume/resume-section';
 import MarkdownDisplay from '@/components/resume/markdown-display';

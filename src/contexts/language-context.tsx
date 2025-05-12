@@ -1,7 +1,8 @@
+
 "use client";
 
-import type { Dictionary, Locale } from '@/lib/i18n';
-import { isLocale, validLocales } from '@/lib/i18n';
+import type { Dictionary } from '@/lib/i18n';
+import { type Locale, isLocale, validLocales } from '@/lib/i18n-config';
 import { useIsMounted } from '@/hooks/use-is-mounted';
 import { usePathname, useRouter } from 'next/navigation';
 import type { Dispatch, ReactNode, SetStateAction} from 'react';
@@ -9,7 +10,7 @@ import { createContext, useContext, useEffect, useState, useCallback } from 'rea
 
 interface LanguageContextType {
   locale: Locale;
-  setLocale: Dispatch<SetStateAction<Locale>>;
+  setLocale: Dispatch<SetStateAction<Locale>>; // Kept for direct state manipulation if needed, but changeLanguage is preferred
   dictionary: Dictionary;
   changeLanguage: (newLocale: Locale) => void;
 }
@@ -18,78 +19,80 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 
 interface LanguageProviderProps {
   children: ReactNode;
-  initialLocale: string; // Passed from [lang]/layout.tsx
-  dictionary: Dictionary; // Passed from [lang]/layout.tsx
+  initialLocale: string; 
+  dictionary: Dictionary; 
 }
 
-export function LanguageProvider({ children, initialLocale, dictionary: initialDictionary }: LanguageProviderProps) {
-  const [locale, setLocale] = useState<Locale>(isLocale(initialLocale) ? initialLocale : 'en');
-  const [dictionary, setDictionary] = useState<Dictionary>(initialDictionary);
+export function LanguageProvider({ children, initialLocale: initialLocaleFromProps, dictionary: initialDictionaryFromProps }: LanguageProviderProps) {
+  const [locale, setLocaleState] = useState<Locale>(isLocale(initialLocaleFromProps) ? initialLocaleFromProps : 'en');
+  const [dictionary, setDictionary] = useState<Dictionary>(initialDictionaryFromProps);
   const isMounted = useIsMounted();
   const router = useRouter();
   const pathname = usePathname();
 
+  // Sync locale and dictionary from props (which come from URL/[lang] segment via Layout)
+  useEffect(() => {
+    if (isLocale(initialLocaleFromProps)) {
+      setLocaleState(initialLocaleFromProps);
+    }
+    setDictionary(initialDictionaryFromProps);
+  }, [initialLocaleFromProps, initialDictionaryFromProps]);
+
+  // Sync with localStorage and redirect if necessary on mount
   useEffect(() => {
     if (isMounted) {
       const storedLocale = localStorage.getItem('locale');
       if (storedLocale && isLocale(storedLocale) && storedLocale !== locale) {
-        // If localStorage has a different valid locale, update state and URL
-        // This handles cases where user changes lang on one tab, opens another
+        // If localStorage has a different valid locale than current URL derived one, prioritize localStorage and redirect
         changeLanguage(storedLocale);
-      } else if (isLocale(initialLocale)) {
-        // Set initial locale and potentially update localStorage if it's not set or different
-        setLocale(initialLocale);
-        localStorage.setItem('locale', initialLocale);
+      } else if (!storedLocale && isLocale(locale)) {
+        // If no locale in localStorage, set it from the current valid locale
+        localStorage.setItem('locale', locale);
       }
     }
-  }, [isMounted, initialLocale]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isMounted]); // Run once on mount, `locale` and `changeLanguage` will be stable or handled by other effects.
 
-
-  const changeLanguage = useCallback(async (newLocale: Locale) => {
+  const changeLanguage = useCallback((newLocale: Locale) => {
     if (!validLocales.includes(newLocale)) {
       console.warn(`Unsupported locale: ${newLocale}. Defaulting to 'en'.`);
       newLocale = 'en';
     }
     
     localStorage.setItem('locale', newLocale);
-    setLocale(newLocale);
+    // setLocaleState(newLocale); // UI will update once router.push completes and props change
 
-    // Dynamically load the new dictionary
-    // Note: This simplified version uses the dictionary passed on initial load for the new language.
-    // A more robust solution might involve fetching the dictionary dynamically if not already available.
-    // For this app, the dictionary is loaded by the [lang]/layout.tsx server component and passed.
-    // So, a page reload (which `router.push` causes for a different [lang]) will provide the new dictionary.
-    
     const currentPath = pathname;
-    const newPath = currentPath.replace(`/${locale}`, `/${newLocale}`);
+    const pathSegments = currentPath.split('/');
+    const currentPathLocale = pathSegments[1];
+    let newPath;
+
+    if (isLocale(currentPathLocale)) {
+      newPath = currentPath.replace(`/${currentPathLocale}`, `/${newLocale}`);
+    } else {
+      // Path doesn't have a locale prefix, prepend newLocale
+      newPath = `/${newLocale}${currentPath.startsWith('/') ? currentPath : `/${currentPath}`}`;
+      if (newPath === `/${newLocale}/`) newPath = `/${newLocale}`; // Avoid double slash for root
+    }
     
     if (newPath !== currentPath) {
       router.push(newPath);
-      // After navigation, the [lang]/layout.tsx will re-render with the new `lang` param,
-      // load the correct dictionary, and pass it to this provider.
-      // To immediately reflect dictionary changes without waiting for full navigation completion,
-      // you might need a more complex state management for dictionaries or ensure `initialDictionary` prop updates.
-      // However, Next.js navigation should handle this by re-rendering the layout with new props.
+    } else if (locale !== newLocale) {
+      // If path is the same but locale state needs update (e.g. initial render before effect syncs props)
+      // This scenario should be less common if props sync correctly.
+      // Forcing a re-render or relying on prop-driven updates is safer.
+      // The layout should re-render with new dictionary and initialLocale prop.
+      setLocaleState(newLocale); // Manually update if no navigation happens
     }
-  }, [locale, pathname, router]);
+  }, [pathname, router, locale]);
 
-
-  // Update dictionary when initialDictionary prop changes (due to lang change)
-  useEffect(() => {
-    setDictionary(initialDictionary);
-  }, [initialDictionary]);
 
   // Update HTML lang attribute
   useEffect(() => {
-    document.documentElement.lang = locale;
-  }, [locale]);
-
-
-  if (!isMounted) {
-    // Render minimal or loading state until mounted to avoid hydration mismatch
-    // For this app, children are rendered to allow server rendering pass-through.
-    // Initial locale from path is used, localStorage sync happens after mount.
-  }
+    if(isMounted) { 
+      document.documentElement.lang = locale;
+    }
+  }, [locale, isMounted]);
   
   return (
     <LanguageContext.Provider value={{ locale, setLocale: changeLanguage, dictionary, changeLanguage }}>
