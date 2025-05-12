@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useLanguage } from '@/hooks/use-language';
@@ -22,8 +23,14 @@ export default function LanguageSwitcher() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="icon" aria-label={dictionary.header.language}>
-          <Globe className="h-5 w-5" />
+        <Button 
+          variant="ghost" 
+          size="sm" // Adjusted size to accommodate text
+          className="px-2" // Added padding for text
+          aria-label={dictionary.header.language}
+        >
+          <Globe className="h-5 w-5 mr-1.5" /> {/* Added margin for spacing */}
+          <span className="text-sm font-medium">{dictionary.languageSwitcher.label}</span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="bg-background shadow-lg rounded-md border">

@@ -26,7 +26,7 @@
     "educationTitle": "Education",
     "skillsTitle": "Skills",
     "projectsTitle": "Projects",
-    "contactTitle": "Contact Information",
+    "contactTitle": "Contact",
     "contactEmail": "Email",
     "contactPhone": "Phone",
     "contactLocation": "Location",
@@ -39,7 +39,8 @@
   },
   "languageSwitcher": {
     "english": "English",
-    "chinese": "中文 (Chinese)"
+    "chinese": "中文 (Chinese)",
+    "label": "中 / EN"
   },
   "autobiographyPage": {
     "title": "Autobiography",

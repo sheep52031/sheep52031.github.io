@@ -1,9 +1,10 @@
 
 import { getDictionary } from '@/lib/i18n';
-import { isLocale } from '@/lib/i18n-config';
-import { getResumeData, type ExperienceEntry, type EducationEntry } from '@/lib/resume-data';
+import { isLocale, type Locale } from '@/lib/i18n-config';
+import { getResumeData } from '@/lib/resume-data';
 import MarkdownDisplay from '@/components/resume/markdown-display';
-import ContactInfoCard from '@/components/resume/contact-info-card'; // New component
+import { Mail, Phone, MapPin, Linkedin, Github, ExternalLink } from 'lucide-react';
+import DownloadPdfButton from '@/components/resume/download-pdf-button';
 
 // Helper component for styling Experience and Education entries
 const EntryItem = ({ 
@@ -25,7 +26,9 @@ const EntryItem = ({
     <h3 className="font-semibold text-lg text-foreground leading-tight">{title}</h3>
     <p className="text-sm text-muted-foreground mb-1">{subtitle}</p>
     {descriptionMarkdown && (
-      <MarkdownDisplay content={descriptionMarkdown} className="text-sm" />
+      <div className="text-sm">
+        <MarkdownDisplay content={descriptionMarkdown} />
+      </div>
     )}
   </div>
 );
@@ -34,25 +37,85 @@ export default async function ResumePage({ params }: { params: { lang: string } 
   const lang = isLocale(params.lang) ? params.lang : 'en';
   const dictionary = await getDictionary(lang);
   const resumeData = getResumeData(lang);
-
+  
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-3 gap-x-10 gap-y-8">
-      {/* Left Column (Main Content) */}
-      <div className="lg:col-span-2 space-y-10">
-        <header className="pt-2">
-          <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-primary">
-            {resumeData.name}
-          </h1>
-          <p className="mt-1 text-xl sm:text-2xl text-muted-foreground">
-            {resumeData.jobTitle}
-          </p>
-          {resumeData.summary.markdown && (
-            <div className="mt-4 text-base text-foreground leading-relaxed">
-              {/* Using MarkdownDisplay for the summary in case it has simple formatting like bold/italics */}
-              <MarkdownDisplay content={resumeData.summary.markdown} />
+    <div className="grid grid-cols-1 gap-y-8">
+      {/* Main Content Column */}
+      <div className="space-y-10">
+        <header className="flex flex-col sm:flex-row justify-between items-start pt-2 pb-6 border-b border-border">
+          {/* Left: Name and Title */}
+          <div>
+            <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-primary">
+              {resumeData.name}
+            </h1>
+            <p className="mt-1 text-lg sm:text-xl text-muted-foreground">
+              {resumeData.jobTitle}
+            </p>
+          </div>
+
+          {/* Right: Contact Info & PDF Download */}
+          <div className="text-xs sm:text-sm text-left sm:text-right mt-4 sm:mt-0 space-y-1.5">
+            {resumeData.contactDetails.email && (
+              <div className="flex items-center justify-start sm:justify-end">
+                <a href={`mailto:${resumeData.contactDetails.email}`} className="hover:text-primary flex items-center">
+                  <Mail className="h-3.5 w-3.5 mr-1.5 text-muted-foreground" />
+                  {resumeData.contactDetails.email}
+                </a>
+              </div>
+            )}
+            {resumeData.contactDetails.phone && (
+              <div className="flex items-center justify-start sm:justify-end">
+                <a href={`tel:${resumeData.contactDetails.phone}`} className="hover:text-primary flex items-center">
+                  <Phone className="h-3.5 w-3.5 mr-1.5 text-muted-foreground" />
+                  {resumeData.contactDetails.phone}
+                </a>
+              </div>
+            )}
+            {resumeData.contactDetails.location && (
+              <div className="flex items-center justify-start sm:justify-end">
+                <MapPin className="h-3.5 w-3.5 mr-1.5 text-muted-foreground" />
+                <span>{resumeData.contactDetails.location}</span>
+              </div>
+            )}
+            {resumeData.contactDetails.linkedin && (
+              <div className="flex items-center justify-start sm:justify-end">
+                <a href={resumeData.contactDetails.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-primary flex items-center">
+                  <Linkedin className="h-3.5 w-3.5 mr-1.5 text-muted-foreground" />
+                  {resumeData.contactDetails.linkedinHandle}
+                </a>
+              </div>
+            )}
+            {resumeData.contactDetails.github && (
+              <div className="flex items-center justify-start sm:justify-end">
+                <a href={resumeData.contactDetails.github} target="_blank" rel="noopener noreferrer" className="hover:text-primary flex items-center">
+                  <Github className="h-3.5 w-3.5 mr-1.5 text-muted-foreground" />
+                  {resumeData.contactDetails.githubHandle}
+                </a>
+              </div>
+            )}
+            {resumeData.contactDetails.portfolio && (
+              <div className="flex items-center justify-start sm:justify-end">
+                <a href={resumeData.contactDetails.portfolio} target="_blank" rel="noopener noreferrer" className="hover:text-primary flex items-center">
+                  <ExternalLink className="h-3.5 w-3.5 mr-1.5 text-muted-foreground" />
+                  {resumeData.contactDetails.portfolio.replace(/^https?:\/\//, '')}
+                </a>
+              </div>
+            )}
+             {/* PDF Download Button - Placeholder action */}
+            <div className="mt-2 flex justify-start sm:justify-end">
+               <DownloadPdfButton dictionary={dictionary} lang={lang as Locale} />
             </div>
-          )}
+          </div>
         </header>
+
+        {/* Summary Section */}
+        {resumeData.summary.markdown && (
+          <section id="summary" className="mt-6">
+            <div className="text-foreground/90 leading-relaxed">
+                <MarkdownDisplay content={resumeData.summary.markdown} />
+            </div>
+          </section>
+        )}
 
         {/* Work Experience Section */}
         {resumeData.experience.entries.length > 0 && (
@@ -112,11 +175,7 @@ export default async function ResumePage({ params }: { params: { lang: string } 
           </section>
         )}
       </div>
-
-      {/* Right Column (Sidebar) */}
-      <aside className="lg:col-span-1 space-y-6 lg:pt-2">
-        <ContactInfoCard contactDetails={resumeData.contactDetails} dictionary={dictionary.resume} />
-      </aside>
     </div>
   );
 }
+
