@@ -60,7 +60,7 @@ const resumeContent: Record<Locale, ResumeData> = {
       github: "https://github.com/sheep52031",
       githubHandle: "sheep52031",
       portfolio: "https://sheep52031.github.io/#/",
-      linkedin: "https://linkedin.com/in/jasonlin-placeholder", // Placeholder
+      linkedin: "https://linkedin.com/in/jasonlin-placeholder", // Placeholder, update if available in HTML
       linkedinHandle: "jasonlin-placeholder", // Placeholder
     },
     summary: {
@@ -122,7 +122,7 @@ Over time, I've learned how to bridge technical challenges with real business ne
         {
           role: "Founder & Strategic Investor",
           company: "LUMACOOL, Cebu, Philippines",
-          period: "2024/01 – 2025/01 (Expected)", // Clarified based on typical resume date ranges
+          period: "2024/01 – 2025/01",
           descriptionMarkdown: `
 - Founded and managed a beverage brand, overseeing strategy, product development, and marketing while acquiring cross-cultural and data-driven business insights.
 - Designed and implemented an automated delivery platform integrating member management and order processing to address revenue challenges.
@@ -168,16 +168,16 @@ Over time, I've learned how to bridge technical challenges with real business ne
       ],
     },
     education: {
-      title: "Education & Continuous Learning",
+      title: "Education & Continuous Learning", // Combined "Education" and "Continuous Learning" from HTML
       entries: [
         {
           degree: "B.S. in Electrical Engineering",
           institution: "Fu Jen Catholic University",
           period: "2012/09 – 2016/06",
-          descriptionMarkdown: "",
+          descriptionMarkdown: "", // No description in HTML for this entry
         },
         {
-          degree: "Intensive English Training Program",
+          degree: "Intensive English Training Program", // Using this as "degree"
           institution: "Philippine Language School",
           period: "2023/09 – 2023/12",
           descriptionMarkdown: `
@@ -209,7 +209,7 @@ I am eager to bring my blend of technical expertise, project leadership, and dat
       `,
     },
   },
-  zh: {
+  zh: { // Chinese content remains unchanged from previous state
     name: "林家任 (Jason Lin)",
     jobTitle: "云解决方案工程师",
     contactDetails: {
@@ -219,8 +219,8 @@ I am eager to bring my blend of technical expertise, project leadership, and dat
       github: "https://github.com/sheep52031",
       githubHandle: "sheep52031",
       portfolio: "https://sheep52031.github.io/#/",
-      linkedin: "https://linkedin.com/in/jasonlin-placeholder-zh", // Placeholder
-      linkedinHandle: "jasonlin-placeholder-zh", // Placeholder
+      linkedin: "https://linkedin.com/in/jasonlin-placeholder-zh", 
+      linkedinHandle: "jasonlin-placeholder-zh", 
     },
     summary: {
       title: "专业总结",
@@ -372,3 +372,4 @@ export const getResumeData = (locale: Locale): ResumeData => {
   return resumeContent[locale] || resumeContent.en;
 };
 
+    
