@@ -5,6 +5,7 @@ import { getResumeData } from '@/lib/resume-data';
 import MarkdownDisplay from '@/components/resume/markdown-display';
 import { Mail, Phone, MapPin, Linkedin, Github, ExternalLink } from 'lucide-react';
 import DownloadPdfButton from '@/components/resume/download-pdf-button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 // Helper component for styling Experience and Education entries
 const EntryItem = ({ 
@@ -44,7 +45,7 @@ export default async function ResumePage({ params }: { params: { lang: string } 
       <div className="space-y-10">
         <header className="flex flex-col sm:flex-row justify-between items-start pt-2 pb-6 border-b border-border">
           {/* Left: Name and Title */}
-          <div>
+          <div className="flex-grow mb-4 sm:mb-0">
             <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-primary">
               {resumeData.name}
             </h1>
@@ -53,58 +54,67 @@ export default async function ResumePage({ params }: { params: { lang: string } 
             </p>
           </div>
 
-          {/* Right: Contact Info & PDF Download */}
-          <div className="text-xs sm:text-sm text-left sm:text-right mt-4 sm:mt-0 space-y-1.5">
-            {resumeData.contactDetails.email && (
-              <div className="flex items-center justify-start sm:justify-end">
-                <a href={`mailto:${resumeData.contactDetails.email}`} className="hover:text-primary flex items-center">
-                  <Mail className="h-3.5 w-3.5 mr-1.5 text-muted-foreground" />
-                  {resumeData.contactDetails.email}
-                </a>
-              </div>
-            )}
-            {resumeData.contactDetails.phone && (
-              <div className="flex items-center justify-start sm:justify-end">
-                <a href={`tel:${resumeData.contactDetails.phone}`} className="hover:text-primary flex items-center">
-                  <Phone className="h-3.5 w-3.5 mr-1.5 text-muted-foreground" />
-                  {resumeData.contactDetails.phone}
-                </a>
-              </div>
-            )}
-            {resumeData.contactDetails.location && (
-              <div className="flex items-center justify-start sm:justify-end">
-                <MapPin className="h-3.5 w-3.5 mr-1.5 text-muted-foreground" />
-                <span>{resumeData.contactDetails.location}</span>
-              </div>
-            )}
-            {resumeData.contactDetails.linkedin && (
-              <div className="flex items-center justify-start sm:justify-end">
-                <a href={resumeData.contactDetails.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-primary flex items-center">
-                  <Linkedin className="h-3.5 w-3.5 mr-1.5 text-muted-foreground" />
-                  {resumeData.contactDetails.linkedinHandle}
-                </a>
-              </div>
-            )}
-            {resumeData.contactDetails.github && (
-              <div className="flex items-center justify-start sm:justify-end">
-                <a href={resumeData.contactDetails.github} target="_blank" rel="noopener noreferrer" className="hover:text-primary flex items-center">
-                  <Github className="h-3.5 w-3.5 mr-1.5 text-muted-foreground" />
-                  {resumeData.contactDetails.githubHandle}
-                </a>
-              </div>
-            )}
-            {resumeData.contactDetails.portfolio && (
-              <div className="flex items-center justify-start sm:justify-end">
-                <a href={resumeData.contactDetails.portfolio} target="_blank" rel="noopener noreferrer" className="hover:text-primary flex items-center">
-                  <ExternalLink className="h-3.5 w-3.5 mr-1.5 text-muted-foreground" />
-                  {resumeData.contactDetails.portfolio.replace(/^https?:\/\//, '')}
-                </a>
-              </div>
-            )}
-             {/* PDF Download Button - Placeholder action */}
-            <div className="mt-2 flex justify-start sm:justify-end">
-               <DownloadPdfButton dictionary={dictionary} lang={lang as Locale} />
-            </div>
+          {/* Right: Contact Card */}
+          <div className="sm:ml-auto mt-4 sm:mt-0 w-full sm:w-auto sm:max-w-xs md:max-w-sm">
+            <Card className="shadow-md">
+              <CardHeader className="p-4">
+                <CardTitle className="text-lg font-semibold text-primary">
+                  {dictionary.resume.contactTitle}
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="p-4 space-y-2 text-xs sm:text-sm">
+                {resumeData.contactDetails.email && (
+                  <div className="flex items-center">
+                    <Mail className="h-4 w-4 mr-2 text-muted-foreground flex-shrink-0" />
+                    <a href={`mailto:${resumeData.contactDetails.email}`} className="hover:text-primary break-all">
+                      {resumeData.contactDetails.email}
+                    </a>
+                  </div>
+                )}
+                {resumeData.contactDetails.phone && (
+                  <div className="flex items-center">
+                    <Phone className="h-4 w-4 mr-2 text-muted-foreground flex-shrink-0" />
+                    <a href={`tel:${resumeData.contactDetails.phone}`} className="hover:text-primary">
+                      {resumeData.contactDetails.phone}
+                    </a>
+                  </div>
+                )}
+                {resumeData.contactDetails.location && (
+                  <div className="flex items-center">
+                    <MapPin className="h-4 w-4 mr-2 text-muted-foreground flex-shrink-0" />
+                    <span>{resumeData.contactDetails.location}</span>
+                  </div>
+                )}
+                {resumeData.contactDetails.linkedin && (
+                  <div className="flex items-center">
+                    <Linkedin className="h-4 w-4 mr-2 text-muted-foreground flex-shrink-0" />
+                    <a href={resumeData.contactDetails.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-primary truncate">
+                      {/* Display handle or full URL based on preference, handle is shorter */}
+                      {resumeData.contactDetails.linkedinHandle || resumeData.contactDetails.linkedin.replace(/^https?:\/\//, '')}
+                    </a>
+                  </div>
+                )}
+                {resumeData.contactDetails.github && (
+                  <div className="flex items-center">
+                    <Github className="h-4 w-4 mr-2 text-muted-foreground flex-shrink-0" />
+                    <a href={resumeData.contactDetails.github} target="_blank" rel="noopener noreferrer" className="hover:text-primary truncate">
+                      {resumeData.contactDetails.githubHandle || resumeData.contactDetails.github.replace(/^https?:\/\//, '')}
+                    </a>
+                  </div>
+                )}
+                {resumeData.contactDetails.portfolio && (
+                  <div className="flex items-center">
+                    <ExternalLink className="h-4 w-4 mr-2 text-muted-foreground flex-shrink-0" />
+                    <a href={resumeData.contactDetails.portfolio} target="_blank" rel="noopener noreferrer" className="hover:text-primary truncate">
+                      {resumeData.contactDetails.portfolio.replace(/^https?:\/\//, '')}
+                    </a>
+                  </div>
+                )}
+                <div className="pt-2">
+                  <DownloadPdfButton dictionary={dictionary} lang={lang as Locale} buttonClassName="w-full" />
+                </div>
+              </CardContent>
+            </Card>
           </div>
         </header>
 
@@ -178,4 +188,3 @@ export default async function ResumePage({ params }: { params: { lang: string } 
     </div>
   );
 }
-

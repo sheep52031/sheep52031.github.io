@@ -26,7 +26,7 @@
     "educationTitle": "Education",
     "skillsTitle": "Skills",
     "projectsTitle": "Projects",
-    "contactTitle": "Contact",
+    "contactTitle": "Contact Information",
     "contactEmail": "Email",
     "contactPhone": "Phone",
     "contactLocation": "Location",
@@ -51,4 +51,3 @@
     "comingSoon": "Content for the portfolio page is coming soon."
   }
 }
-
