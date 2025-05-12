@@ -18,6 +18,8 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  // 添加 output 設置以啟用靜態輸出
+  output: 'export',
 };
 
 export default nextConfig;
