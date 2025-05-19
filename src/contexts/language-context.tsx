@@ -95,7 +95,7 @@ export function LanguageProvider({ children, initialLocale: initialLocaleFromPro
   }, [locale, isMounted]);
   
   return (
-    <LanguageContext.Provider value={{ locale, setLocale: changeLanguage, dictionary, changeLanguage }}>
+    <LanguageContext.Provider value={{ locale, setLocale: setLocaleState, dictionary, changeLanguage }}>
       {children}
     </LanguageContext.Provider>
   );

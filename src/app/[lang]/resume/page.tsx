@@ -1,10 +1,10 @@
-
 import { getDictionary } from '@/lib/i18n';
 import { isLocale, type Locale } from '@/lib/i18n-config';
 import { getResumeData } from '@/lib/resume-data';
 import MarkdownDisplay from '@/components/resume/markdown-display';
 import { Mail, Phone, MapPin, Linkedin, Github, ExternalLink } from 'lucide-react';
 import DownloadPdfButton from '@/components/resume/download-pdf-button';
+import SkillsGrid from '@/components/resume/skills-grid';
 
 // Helper component for styling Experience and Education entries
 const EntryItem = ({ 
@@ -33,13 +33,14 @@ const EntryItem = ({
   </div>
 );
 
-export default async function ResumePage({ params }: { params: { lang: string } }) {
-  const lang = isLocale(params.lang) ? params.lang : 'en';
-  const dictionary = await getDictionary(lang);
-  const resumeData = getResumeData(lang);
+export default async function ResumePage({ params }: { params: Promise<{ lang: string }> }) {
+  const { lang } = await params;
+  const currentLang = isLocale(lang) ? lang : 'en';
+  const dictionary = await getDictionary(currentLang);
+  const resumeData = getResumeData(currentLang);
   
   return (
-    <div className="grid grid-cols-1 gap-y-8">
+    <div id="resume-content" className="grid grid-cols-1 gap-y-8">
       {/* Main Content Column */}
       <div className="space-y-10">
         <header className="grid grid-cols-1 md:grid-cols-3 gap-x-8 pt-2 pb-6 border-b border-border">
@@ -69,49 +70,41 @@ export default async function ResumePage({ params }: { params: { lang: string } 
               <h2 className="text-lg font-semibold text-primary mb-3">
                 {dictionary.resume.contactTitle}
               </h2>
-              {resumeData.contactDetails.email && (
+              {resumeData.email && (
                 <div className="flex items-center mt-1.5">
                   <Mail className="h-3.5 w-3.5 mr-1.5 text-muted-foreground flex-shrink-0" />
-                  <a href={`mailto:${resumeData.contactDetails.email}`} className="hover:text-primary break-all text-xs">
-                    {resumeData.contactDetails.email}
+                  <a href={`mailto:${resumeData.email}`} className="hover:text-primary break-all text-xs">
+                    {resumeData.email}
                   </a>
                 </div>
               )}
-              {resumeData.contactDetails.phone && (
+              {resumeData.phone && (
                 <div className="flex items-center mt-1.5">
                   <Phone className="h-3.5 w-3.5 mr-1.5 text-muted-foreground flex-shrink-0" />
-                  <a href={`tel:${resumeData.contactDetails.phone}`} className="hover:text-primary text-xs">
-                    {resumeData.contactDetails.phone}
+                  <a href={`tel:${resumeData.phone}`} className="hover:text-primary text-xs">
+                    {resumeData.phone}
                   </a>
                 </div>
               )}
-              {resumeData.contactDetails.location && (
+              {resumeData.location && (
                 <div className="flex items-center mt-1.5">
                   <MapPin className="h-3.5 w-3.5 mr-1.5 text-muted-foreground flex-shrink-0" />
-                  <span className="text-xs">{resumeData.contactDetails.location}</span>
+                  <span className="text-xs">{resumeData.location}</span>
                 </div>
               )}
-              {resumeData.contactDetails.linkedin && (
+              {resumeData.linkedin && (
                 <div className="flex items-center mt-1.5">
                   <Linkedin className="h-3.5 w-3.5 mr-1.5 text-muted-foreground flex-shrink-0" />
-                  <a href={resumeData.contactDetails.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-primary truncate text-xs">
-                    {resumeData.contactDetails.linkedinHandle || resumeData.contactDetails.linkedin.replace(/^https?:\/\//, '')}
+                  <a href={resumeData.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-primary truncate text-xs">
+                    {resumeData.linkedin.replace(/^https?:\/\//, '')}
                   </a>
                 </div>
               )}
-              {resumeData.contactDetails.github && (
+              {resumeData.github && (
                 <div className="flex items-center mt-1.5">
                   <Github className="h-3.5 w-3.5 mr-1.5 text-muted-foreground flex-shrink-0" />
-                  <a href={resumeData.contactDetails.github} target="_blank" rel="noopener noreferrer" className="hover:text-primary truncate text-xs">
-                    {resumeData.contactDetails.githubHandle || resumeData.contactDetails.github.replace(/^https?:\/\//, '')}
-                  </a>
-                </div>
-              )}
-              {resumeData.contactDetails.portfolio && (
-                <div className="flex items-center mt-1.5">
-                  <ExternalLink className="h-3.5 w-3.5 mr-1.5 text-muted-foreground flex-shrink-0" />
-                  <a href={resumeData.contactDetails.portfolio} target="_blank" rel="noopener noreferrer" className="hover:text-primary truncate text-xs">
-                    {resumeData.contactDetails.portfolio.replace(/^https?:\/\//, '')}
+                  <a href={resumeData.github} target="_blank" rel="noopener noreferrer" className="hover:text-primary truncate text-xs">
+                    {resumeData.github.replace(/^https?:\/\//, '')}
                   </a>
                 </div>
               )}
@@ -132,9 +125,9 @@ export default async function ResumePage({ params }: { params: { lang: string } 
               {resumeData.experience.entries.map((entry, index) => (
                 <EntryItem
                   key={index}
-                  title={entry.role}
+                  title={entry.role || entry.title || ""}
                   subtitle={`${entry.company} | ${entry.period}`}
-                  descriptionMarkdown={entry.descriptionMarkdown}
+                  descriptionMarkdown={entry.descriptionMarkdown || ""}
                 />
               ))}
             </div>
@@ -153,7 +146,7 @@ export default async function ResumePage({ params }: { params: { lang: string } 
                   key={index}
                   title={entry.degree}
                   subtitle={`${entry.institution} | ${entry.period}`}
-                  descriptionMarkdown={entry.descriptionMarkdown}
+                  descriptionMarkdown={entry.descriptionMarkdown || ""}
                 />
               ))}
             </div>
@@ -161,14 +154,42 @@ export default async function ResumePage({ params }: { params: { lang: string } 
         )}
         
         {/* Skills Section */}
-        {resumeData.skills.markdown && (
-          <section id="skills">
-            <h2 className="text-2xl font-bold text-primary mb-4 pb-1 border-b-2 border-primary/30">
-              {dictionary.resume.skillsTitle}
-            </h2>
-            <MarkdownDisplay content={resumeData.skills.markdown} />
-          </section>
-        )}
+        <section id="skills">
+          <h2 className="text-2xl font-bold text-primary mb-4 pb-1 border-b-2 border-primary/30">
+            {dictionary.resume.skillsTitle}
+          </h2>
+          <SkillsGrid 
+            categories={[
+              {
+                title: lang === 'en' ? 'Programming & Scripting' : '程式設計與腳本',
+                skills: ['Python - FastAPI', 'React - JavaScript']
+              },
+              {
+                title: lang === 'en' ? 'Machine Learning & AI' : '機器學習與人工智慧',
+                skills: ['TensorFlow', 'YOLOv7', 'MCP Server']
+              },
+              {
+                title: lang === 'en' ? 'DevOps' : '雲端與部署',
+                skills: ['Google Cloud Platform', 'Docker', 'Linux', 'Git', 'CI/CD']
+              },
+              {
+                title: lang === 'en' ? 'Data Analysis' : '資料分析',
+                skills: ['SQL', 'EXCEL']
+              },
+              {
+                title: lang === 'en' ? 'Automation' : '自動化流程',
+                skills: ['n8n workflow']
+              },
+              {
+                title: lang === 'en' ? 'Languages' : '語言能力',
+                skills: [
+                  lang === 'en' ? 'Chinese: Native' : '中文：母語', 
+                  lang === 'en' ? 'English: Conversational' : '英文：日常會話流利'
+                ]
+              }
+            ]}
+          />
+        </section>
 
         {/* Projects Section */}
         {resumeData.projects.markdown && (

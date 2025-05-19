@@ -1,123 +1,105 @@
-
+import React from 'react';
 import { getDictionary } from '@/lib/i18n';
-import { isLocale } from '@/lib/i18n-config';
+import type { Locale } from '@/lib/i18n-config';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { getPortfolioData, type Project } from '@/lib/portfolio-data';
-import MarkdownDisplay from '@/components/resume/markdown-display';
-import { ExternalLink, Github, PlayCircle, Percent } from 'lucide-react';
+import { Card, CardContent, CardHeader, CardDescription, CardFooter } from '@/components/ui/card';
+import { getAllProjects } from '@/lib/markdown-utils';
 
-export default async function PortfolioPage({ params }: { params: { lang: string } }) {
-  const lang = isLocale(params.lang) ? params.lang : 'en';
-  const dictionary = await getDictionary(lang);
-  const portfolioData = getPortfolioData(lang);
+// 定義 Project 類型
+interface ProjectScreenshot {
+  url: string;
+  caption: string;
+  dataAiHint?: string;
+}
+
+interface Project {
+  id: number;
+  title: string;
+  shortDescription: string;
+  image: string;
+  dataAiHint?: string;
+  technologies: string[];
+  demoLink?: string;
+  githubLink?: string;
+  projectDocumentUrl?: string;
+  architectureDiagramUrl?: string;
+  satisfaction?: number;
+  date: string;
+  videoUrl?: string;
+  screenshots?: ProjectScreenshot[];
+  markdownFile?: string;
+}
+
+// 靜態生成函數
+export async function generateStaticParams() {
+  return [
+    { lang: 'zh' },
+    { lang: 'en' }
+  ];
+}
+
+// 伺服器端元件
+export default async function PortfolioPage({ params }: { params: Promise<{ lang: string }> }) {
+  // 在構建時取得語言與資料
+  const { lang } = await params;
+  const dictionary = await getDictionary(lang as Locale);
+  
+  // 直接從檔案系統讀取專案資料，傳遞語言參數
+  const projects = await getAllProjects('content/projects', lang);
+
+
+  const pageTitle = lang === 'en' ? 'My Project Portfolio' : '我的專案作品集';
+  const pageIntro = lang === 'en'
+    ? 'Here are some of my most representative projects. Click any card to view the full story, architecture, and my contribution.'
+    : '以下是我最具代表性的專案，點擊卡片可深入了解專案背景、技術架構與我的貢獻。';
 
   return (
     <div className="container mx-auto py-8 px-4">
-      <h1 className="text-3xl font-bold text-primary mb-2">
-        {dictionary.portfolioPage.title}
-      </h1>
-      
-      <p className="text-lg text-muted-foreground mb-8">
-        {dictionary.portfolioPage.comingSoon}
-      </p>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {portfolioData.projects.map((project: Project) => (
-          <Card key={project.id} className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col rounded-lg">
-            <div className="relative w-full h-64 sm:h-72">
+      <div className="max-w-4xl mx-auto text-center mb-10">
+        <h1 className="text-3xl md:text-4xl font-bold mb-2 text-primary">{pageTitle}</h1>
+        <p className="text-muted-foreground text-lg mb-4">{pageIntro}</p>
+      </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-8">
+        {projects.map((project: Project) => (
+          <Card key={project.id} className="overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 flex flex-col rounded-2xl border border-border bg-background">
+            <Link href={`/${lang}/portfolio/${project.id}`} className="relative w-full h-56 block group" aria-label={lang === 'en' ? `View detail of ${project.title}` : `查看${project.title}詳細介紹`}>
               <Image 
                 src={project.image} 
                 alt={project.title} 
                 layout="fill" 
                 objectFit="cover"
                 data-ai-hint={project.dataAiHint}
-                className="rounded-t-lg"
+                className="rounded-t-2xl group-hover:brightness-90 transition"
+                priority={project.id === 1}
               />
-              {project.videoUrl && (
-                 <Link href={project.videoUrl} target="_blank" rel="noopener noreferrer"
-                    className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-40 hover:bg-opacity-60 transition-opacity duration-300">
-                    <PlayCircle className="h-16 w-16 text-white opacity-80 hover:opacity-100" />
-                 </Link>
-              )}
-            </div>
-            <CardHeader className="p-6">
-              <CardTitle className="text-2xl text-primary">{project.title}</CardTitle>
-              <CardDescription className="text-sm text-muted-foreground pt-1">{project.date}</CardDescription>
+              <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity rounded-t-2xl" />
+              <div className="absolute bottom-2 left-2 bg-black/60 text-white text-xs px-3 py-1 rounded-full opacity-90 pointer-events-none">
+                {lang === 'en' ? 'View Details' : '查看詳情'}
+              </div>
+            </Link>
+            <CardHeader className="p-5 pb-2">
+              <Link href={`/${lang}/portfolio/${project.id}`} className="text-xl font-semibold text-primary hover:underline hover:text-primary/80 transition">
+                {project.title}
+              </Link>
+              <CardDescription className="text-xs text-muted-foreground pt-1">{project.date}</CardDescription>
             </CardHeader>
-            <CardContent className="p-6 pt-0 flex-grow">
-              <p className="mb-3 text-foreground/90">{project.shortDescription}</p>
-              
-              <div className="mb-4">
-                <h4 className="text-sm font-semibold text-foreground mb-1">
-                  {lang === 'en' ? 'Technologies Used:' : '使用技术：'}
-                </h4>
-                <div className="flex flex-wrap gap-2">
-                  {project.technologies.map(tech => (
-                    <span key={tech} className="px-2.5 py-1 text-xs bg-secondary text-secondary-foreground rounded-full font-medium">
-                      {tech}
-                    </span>
-                  ))}
-                </div>
+            <CardContent className="p-5 pt-2 flex-grow">
+              <p className="mb-4 text-foreground/90 line-clamp-3">{project.shortDescription}</p>
+              <div className="flex flex-wrap gap-2 mb-2">
+                {project.technologies.map(tech => (
+                  <span key={tech} className="px-2 py-0.5 text-xs bg-secondary text-secondary-foreground rounded-full font-medium border border-border/40">
+                    {tech}
+                  </span>
+                ))}
               </div>
-              
-              {project.satisfaction && (
-                <div className="flex items-center text-sm text-foreground/80 mb-4">
-                  <Percent className="h-4 w-4 mr-1.5 text-primary/80" />
-                  <span>{lang === 'en' ? 'Client Satisfaction:' : '客户满意度：'} {project.satisfaction}%</span>
-                </div>
-              )}
-              
-              {/* Collapsible Full Description - Consider a modal or accordion for longer descriptions */}
-              <details className="prose prose-sm max-w-none dark:prose-invert text-foreground/80">
-                <summary className="cursor-pointer text-primary hover:underline">
-                  {lang === 'en' ? 'Read More' : '阅读更多'}
-                </summary>
-                <div className="mt-2">
-                 <MarkdownDisplay content={project.fullDescription} />
-                </div>
-              </details>
-
-              {project.screenshots && project.screenshots.length > 0 && (
-                <div className="mt-4">
-                  <h4 className="text-sm font-semibold text-foreground mb-2">
-                    {lang === 'en' ? 'Screenshots:' : '截图：'}
-                  </h4>
-                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
-                    {project.screenshots.map((ss, index) => (
-                      <div key={index} className="relative aspect-video rounded overflow-hidden group">
-                        <Image src={ss.url} alt={ss.caption} layout="fill" objectFit="cover" data-ai-hint={ss.dataAiHint || 'project screenshot'} />
-                        <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-opacity duration-300 flex items-end justify-center p-1">
-                          <p className="text-white text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-center">{ss.caption}</p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-
             </CardContent>
-            <CardFooter className="p-6 pt-0 border-t mt-auto bg-secondary/30">
-              <div className="flex items-center space-x-3">
-                {project.demoLink && (
-                  <Button variant="outline" size="sm" asChild className="hover:bg-primary/10 hover:border-primary">
-                    <Link href={project.demoLink} target="_blank" rel="noopener noreferrer">
-                      <ExternalLink className="h-4 w-4 mr-1.5" />
-                      {lang === 'en' ? 'Live Demo' : '查看演示'}
-                    </Link>
-                  </Button>
-                )}
-                {project.githubLink && (
-                  <Button variant="outline" size="sm" asChild className="hover:bg-primary/10 hover:border-primary">
-                    <Link href={project.githubLink} target="_blank" rel="noopener noreferrer">
-                      <Github className="h-4 w-4 mr-1.5" />
-                      {lang === 'en' ? 'Source Code' : '源代码'}
-                    </Link>
-                  </Button>
-                )}
-              </div>
+            <CardFooter className="px-5 pb-5 pt-0">
+              <Link href={`/${lang}/portfolio/${project.id}`} className="w-full">
+                <button className="w-full py-2 rounded-lg bg-primary text-white font-semibold hover:bg-primary/90 transition">
+                  {lang === 'en' ? 'View Project' : '查看專案'}
+                </button>
+              </Link>
             </CardFooter>
           </Card>
         ))}

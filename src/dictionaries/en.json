@@ -35,7 +35,7 @@
     "contactPortfolio": "Portfolio"
   },
   "footer": {
-    "text": "© 2024 John Doe. All rights reserved."
+    "text": "© 2025 Jason Lin. All rights reserved."
   },
   "languageSwitcher": {
     "english": "English",
@@ -48,6 +48,7 @@
   },
   "portfolioPage": {
     "title": "Portfolio",
-    "comingSoon": "Content for the portfolio page is coming soon."
+    "comingSoon": "Content for the portfolio page is coming soon.",
+    "notFound": "Project not found"
   }
 }

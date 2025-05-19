@@ -84,6 +84,10 @@ export default function Header({ appName }: HeaderProps) {
                 </Button>
               </SheetTrigger>
               <SheetContent side="right" className="w-full max-w-xs p-6 bg-background">
+  {/* 無障礙 Sheet 標題，僅供螢幕閱讀器朗讀，不顯示於畫面 */}
+  <span className="sr-only" role="heading" aria-level={1}>
+    {dictionary.header.openMenu}
+  </span>
                 <div className="flex flex-col space-y-4">
                   <Link 
                     href={`/${locale}/resume`} 

@@ -206,6 +206,10 @@ const Sidebar = React.forwardRef<
             }
             side={side}
           >
+            {/* 無障礙 Sheet 標題，僅供螢幕閱讀器朗讀，不顯示於畫面 */}
+            <span className="sr-only" role="heading" aria-level={1}>
+              選單
+            </span>
             <div className="flex h-full w-full flex-col">{children}</div>
           </SheetContent>
         </Sheet>

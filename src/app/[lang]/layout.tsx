@@ -11,23 +11,25 @@ export async function generateStaticParams() {
   return [{ lang: 'en' }, { lang: 'zh' }];
 }
 
-export async function generateMetadata({ params }: { params: { lang: string } }): Promise<Metadata> {
-  const lang = isLocale(params.lang) ? params.lang : 'en';
-  const dictionary = await getDictionary(lang);
-  const resumeData = getResumeData(lang);
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+  const { lang } = await params;
+  const currentLang = isLocale(lang) ? lang : 'en';
+  const dictionary = await getDictionary(currentLang);
+  const resumeData = getResumeData(currentLang);
   return {
-    title: `${resumeData.name} - ${dictionary.nav.resume}`, // More specific title
-    description: resumeData.summary.markdown.substring(0, 160), // Use part of summary for description
+    title: `${resumeData.name} - ${dictionary.nav.resume}`,
+    description: resumeData.summary.markdown.substring(0, 160),
   };
 }
 
 export default async function LangLayout({
   children,
-  params: { lang },
+  params,
 }: {
   children: React.ReactNode;
-  params: { lang: string }; 
+  params: Promise<{ lang: string }>;
 }) {
+  const { lang } = await params;
   const currentLang = isLocale(lang) ? lang : 'en';
   const dictionary = await getDictionary(currentLang);
   const resumeData = getResumeData(currentLang);

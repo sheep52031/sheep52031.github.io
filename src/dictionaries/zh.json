@@ -1,41 +1,41 @@
 
 {
-  "appName": "张三",
+  "appName": "Jason Lin",
   "nav": {
-    "resume": "简历",
-    "autobiography": "自传",
+    "resume": "履歷",
+    "autobiography": "自傳",
     "portfolio": "作品集",
-    "home": "首页",
-    "experience": "工作经历",
+    "home": "首頁",
+    "experience": "工作經歷",
     "education": "教育背景",
-    "skills": "技能专长",
-    "projects": "项目经验",
-    "contact": "联系方式"
+    "skills": "技能專長",
+    "projects": "專案經驗",
+    "contact": "聯絡方式"
   },
   "header": {
-    "downloadPdf": "下载PDF",
-    "language": "语言",
-    "openMenu": "打开菜单"
+    "downloadPdf": "下載PDF",
+    "language": "語言",
+    "openMenu": "打開選單"
   },
   "resume": {
-    "title": "我的简历",
-    "name": "张三",
-    "jobTitle": "高级软件工程师",
-    "summaryTitle": "个人总结",
-    "experienceTitle": "工作经历",
+    "title": "我的履歷",
+    "name": "Jason Lin",
+    "jobTitle": "軟體工程師",
+    "summaryTitle": "個人總結",
+    "experienceTitle": "工作經歷",
     "educationTitle": "教育背景",
-    "skillsTitle": "技能专长",
-    "projectsTitle": "项目经验",
-    "contactTitle": "联系方式",
-    "contactEmail": "邮箱",
-    "contactPhone": "电话",
-    "contactLocation": "地点",
-    "contactLinkedIn": "领英",
+    "skillsTitle": "技能專長",
+    "projectsTitle": "專案經驗",
+    "contactTitle": "聯絡方式",
+    "contactEmail": "電子郵件",
+    "contactPhone": "電話",
+    "contactLocation": "地點",
+    "contactLinkedIn": "LinkedIn",
     "contactGitHub": "GitHub",
-    "contactPortfolio": "个人网站"
+    "contactPortfolio": "個人網站"
   },
   "footer": {
-    "text": "© 2024 张三。版权所有。"
+    "text": "© 2025 林家任。版權所有。"
   },
   "languageSwitcher": {
     "english": "English (英文)",
@@ -43,11 +43,12 @@
     "label": "中 / EN"
   },
   "autobiographyPage": {
-    "title": "自传",
-    "comingSoon": "自传页面内容即将推出。"
+    "title": "自傳",
+    "comingSoon": "自傳頁面內容即將推出。"
   },
   "portfolioPage": {
     "title": "作品集",
-    "comingSoon": "作品集页面内容即将推出。"
+    "comingSoon": "作品集頁面內容即將推出。",
+    "notFound": "找不到專案"
   }
 }
