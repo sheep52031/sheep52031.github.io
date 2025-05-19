@@ -1,0 +1,120 @@
+1:"$Sreact.fragment"
+2:I[87555,[],""]
+3:I[31295,[],""]
+6:I[59665,[],"OutletBoundary"]
+9:I[59665,[],"ViewportBoundary"]
+b:I[59665,[],"MetadataBoundary"]
+d:I[26614,[],""]
+:HL["/_next/static/media/028c0d39d2e8f589-s.p.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/5b01f339abf2f1a5.p.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/css/6ad9841b43ad2bc9.css","style"]
+:HL["/_next/static/css/80581841b790d256.css","style"]
+0:{"P":null,"b":"7hS1j929ZDNrE9mTC2YnQ","p":"","c":["","zh","portfolio","2"],"i":false,"f":[[["",{"children":[["lang","zh","d"],{"children":["portfolio",{"children":[["id","2","d"],{"children":["__PAGE__",{}]}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/6ad9841b43ad2bc9.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/css/80581841b790d256.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":["$","body",null,{"className":"__variable_fb8f2c __variable_f910ec font-sans antialiased","children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]]}],{"children":[["lang","zh","d"],["$","$1","c",{"children":[null,"$L4"]}],{"children":["portfolio",["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["id","2","d"],["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L5","$undefined",null,["$","$L6",null,{"children":["$L7","$L8",null]}]]}],{},null,false]},null,false]},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","39Q3EdrVx9moTnTVhS6OR",{"children":[["$","$L9",null,{"children":"$La"}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],["$","$Lb",null,{"children":"$Lc"}]]}],false]],"m":"$undefined","G":["$d","$undefined"],"s":false,"S":true}
+e:I[30,["263","static/chunks/263-03d8524f879e63fe.js","874","static/chunks/874-a47e53a6366411c4.js","244","static/chunks/244-0de152023548add8.js","160","static/chunks/app/%5Blang%5D/layout-b55a94787d5c96a1.js"],"LanguageProvider"]
+f:I[66146,["263","static/chunks/263-03d8524f879e63fe.js","874","static/chunks/874-a47e53a6366411c4.js","244","static/chunks/244-0de152023548add8.js","160","static/chunks/app/%5Blang%5D/layout-b55a94787d5c96a1.js"],"default"]
+10:I[57323,["263","static/chunks/263-03d8524f879e63fe.js","874","static/chunks/874-a47e53a6366411c4.js","244","static/chunks/244-0de152023548add8.js","160","static/chunks/app/%5Blang%5D/layout-b55a94787d5c96a1.js"],"Toaster"]
+4:["$","$Le",null,{"initialLocale":"zh","dictionary":{"appName":"Jason Lin","nav":{"resume":"履歷","autobiography":"自傳","portfolio":"作品集","home":"首頁","experience":"工作經歷","education":"教育背景","skills":"技能專長","projects":"專案經驗","contact":"聯絡方式"},"header":{"downloadPdf":"下載PDF","language":"語言","openMenu":"打開選單"},"resume":{"title":"我的履歷","name":"Jason Lin","jobTitle":"軟體工程師","summaryTitle":"個人總結","experienceTitle":"工作經歷","educationTitle":"教育背景","skillsTitle":"技能專長","projectsTitle":"專案經驗","contactTitle":"聯絡方式","contactEmail":"電子郵件","contactPhone":"電話","contactLocation":"地點","contactLinkedIn":"LinkedIn","contactGitHub":"GitHub","contactPortfolio":"個人網站"},"footer":{"text":"© 2025 林家任。版權所有。"},"languageSwitcher":{"english":"English (英文)","chinese":"中文","label":"中 / EN"},"autobiographyPage":{"title":"自傳","comingSoon":"自傳頁面內容即將推出。"},"portfolioPage":{"title":"作品集","comingSoon":"作品集頁面內容即將推出。","notFound":"找不到專案"}},"children":[["$","div",null,{"className":"flex min-h-screen flex-col bg-background text-foreground","children":[["$","$Lf",null,{"appName":"林家任 (Jason Lin)"}],["$","main",null,{"className":"flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8","children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]}],["$","footer",null,{"className":"py-6 text-center text-sm text-muted-foreground border-t","children":"© 2025 林家任。版權所有。"}]]}],["$","$L10",null,{}]]}]
+a:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+7:null
+8:null
+c:[["$","title","0",{"children":"Meowda：AI賦能的猴硐貓咪地圖尋訪與故事互動系統 | Jason's Portfolio"}],["$","meta","1",{"name":"description","content":"領導團隊開發的LINE聊天機器人，透過AI辨識猴硐特定貓咪，結合故事與遊戲化地圖，提升遊客互動體驗。"}],["$","link","2",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"}]]
+11:I[76410,["146","static/chunks/146-efce2f53fdf16d38.js","263","static/chunks/263-03d8524f879e63fe.js","63","static/chunks/63-4940dcd7157e5bda.js","346","static/chunks/app/%5Blang%5D/portfolio/%5Bid%5D/page-65cbd5eb045d1c3e.js"],"default"]
+12:T1ff7,
+
+# Meowda：AI賦能的猴硐貓咪地圖尋訪與故事互動系統
+
+
+## 專案背景與目標
+
+此專案誕生於TibaMe AI應用開發培訓課程。作為專案組長，我面臨的首要任務是在短短45天內，帶領包含我在內的6人團隊，從零開始構思並實作出一個既能應用所學AI技術，又具備高展示性與在地文化連結的專案，最終目標是提升團隊成員的實戰經驗，助力大家順利轉職進入軟體產業。
+
+在眾多AI應用方向中，我們選擇了「影像辨識」。考量到台灣本地特色與互動趣味性，我們將目光投向了新北的「猴硐貓村」。這裡不僅是知名的觀光景點，更棲息著許多被當地愛心人士照料、擁有各自名字與故事的貓咪。然而，初次到訪的遊客往往難以辨識這些貓咪，也無從得知它們背後的點滴，這使得遊客與貓咪、與地方文化的連結感較弱。
+
+我們的核心構想是：開發一個LINE聊天機器人，讓遊客化身為「尋貓偵探」。遊客只需上傳在貓村拍攝的貓咪照片，系統就能透過AI即時辨識出這是哪一隻已登錄的貓咪（例如：小花、阿肥等），並從資料庫中提取該貓咪的名字、獨特的故事、個性特徵等資訊回傳給遊客。更進一步，我們設計了「貓咪地圖收集」的遊戲化機制，旨在提升遊覽的趣味性和成就感，並間接喚起對流浪動物照護議題的關注。
+
+
+## 核心功能與特色
+
+* **AI貓咪個體辨識：** 透過訓練YOLOv7模型，實現對猴硐特定貓咪（最初選定約8隻，後續可擴展至14隻）的高精度個體辨識（準確率超過85%）。用戶上傳照片後，系統能快速識別出貓咪的登錄名字。
+
+* **貓咪故事與資訊互動：** 辨識成功後，系統從MongoDB資料庫中提取並展示該貓咪的專屬故事、個性特徵、性別等資訊，深化遊客與貓咪的情感連結。
+
+* **遊戲化尋貓地圖：** 設計「貓咪地圖收集」機制，遊客每成功辨識一隻新的貓咪，即可在個人化的虛擬地圖上「點亮」該貓咪的圖標，增加了探索貓村的趣味性和目標感，可作為個人成就或團體競賽。
+
+* **LINE Bot便捷交互：** 基於LINE Messaging API開發，用戶無需下載額外APP，即可在熟悉的通訊軟體中完成所有互動，降低使用門檻。
+
+
+## 技術架構與實現
+
+
+### 前端實現
+
+* **用戶界面 (LINE)：** 主要的用戶互動界面透過LINE聊天機器人實現，利用LINE Messaging API接收用戶指令（如上傳圖片）並回傳處理結果（如辨識出的貓咪資訊、圖片標註）。
+
+* **潛在擴展：** 雖然此專案主要以LINE Bot為前端，但後端API的設計考慮了未來擴展至其他前端應用的可能性。
+
+
+### 後端架構
+
+* **雙伺服器架構：**
+    * **Line Chatbot Server (Flask)：** 使用Python Flask框架搭建，負責處理來自LINE平台的Webhook請求、解析用戶訊息、協調與YOLOv7模型伺服器的通訊，以及從MongoDB資料庫中查詢貓咪詳細資訊並組織回傳給用戶的最終響應。
+    * **YOLOv7 Model Server (FastAPI)：** 使用Python FastAPI框架搭建，專門負責接收圖片數據、執行圖像預處理、調用YOLOv7模型進行推論，並將原始辨識結果（如貓咪ID、置信度、邊界框座標）以JSON格式回傳給Chatbot Server。選擇FastAPI是看重其高性能與異步處理能力。
+
+* **資料庫 (MongoDB)：** 用於存儲每隻已登錄貓咪的詳細資料，包括名字、故事、個性、性別、照片等，供Chatbot Server在辨識成功後查詢。
+
+* **AI模型 (YOLOv7)：** 採用遷移學習方式，基於預訓練的YOLOv7模型，使用在猴硐實地收集並精心標註的貓咪圖像數據進行客製化訓練，以適應特定貓咪個體的辨識任務。
+
+
+### 部署與運維
+
+* **容器化 (Docker)：** 將Flask應用與FastAPI應用分別進行Docker容器化，確保了開發、測試與生產環境的一致性，簡化了部署流程。
+
+* **雲端平台 (Google Cloud Run)：** 兩個後端服務均部署在Google Cloud Run無伺服器平台，實現了按需自動擴展，有效應對潛在的遊客瞬時高併發請求，同時在離峰時段節省了運維成本。
+
+**(您可以在此處嵌入或連結您的軟體架構圖，例如使用 `public/meowda_system_architecture_compact.svg` 圖片)**
+
+
+## 開發過程中的挑戰與解決方案
+
+
+### 挑戰一：高質量AI訓練數據的獲取與優化
+
+* **問題：** 專案初期，團隊缺乏野生環境下動物圖像數據收集經驗。首次在猴硐拍攝的貓咪照片雖然數量多，但因角度單一、背景重複、貓咪姿態變化少等問題，導致初版模型辨識準確率未達預期。
+
+* **解決方案：** 經過分析與討論，我們意識到訓練數據的多樣性遠比單純的數量更重要。第二次實地數據收集時，我們制定了更詳細的拍攝策略：主動引導貓咪產生更多樣的姿態和動作（如使用逗貓棒），從不同角度（俯拍、平拍、仰拍）進行拍攝，並確保照片背景的多樣性（水泥地、草叢、木板、天空等）。同時，也刻意收集了多隻貓咪同時入鏡的圖像，以提升模型在複雜場景下的辨識魯棒性。這次策略的調整顯著提升了訓練數據的質量，進而使模型準確率達到了超過85%的目標。
+
+
+### 挑戰二：有限時間內的技術選型與快速原型開發
+
+* **問題：** 專案週期僅45天，需在短時間內完成從概念設計、技術選型、數據收集、模型訓練到應用開發與部署的全過程。
+
+* **解決方案：**
+    * **快速迭代：** 採用敏捷開發思路，先專注於核心功能的實現（AI辨識特定貓咪並返回基本資訊），再逐步完善遊戲化機制和用戶體驗細節。
+    * **成熟技術選型：** 選擇了社群活躍、文檔相對完善的YOLOv7、Flask、FastAPI等框架，降低了學習曲線和踩坑風險。
+    * **團隊分工：** 作為組長，我根據組員的興趣和能力進行合理分工，例如部分組員專注數據收集與標註，部分專注模型訓練調優，部分專注後端API開發，確保了各個環節的並行推進。
+
+
+## 成果與收穫
+
+* **成功上線與高度評價：** 「Meowda猴硐貓咪個體辨識與故事互動LINE Bot服務」成功開發並部署，實現了預期功能，為遊客提供了一種新穎有趣的「尋貓集章」互動體驗。
+
+* **榮獲獎項肯定：** 專案在TibaMe Academy的成果發表會中，從眾多企業出題的專案中脫穎而出，榮獲「學習成果發表Top1 最佳潛力獎」。
+
+* **助力團隊成員成功轉職：** 最令我欣慰的是，憑藉此專案所展現的實戰能力，所有團隊成員（包括我自己）均在培訓結束後順利找到了理想的軟體工程或AI相關工作，成功開啟了新的職涯篇章。
+
+* **個人成長：** 此專案是我AI技術應用與專案管理能力的一次重要躍升。它不僅讓我完整地經歷了從概念發想到產品落地的全過程，更讓我學會了如何在資源與時間均有限的情況下，帶領團隊克服挑戰、達成目標。
+
+
+## 未來展望
+
+雖然Meowda是一個培訓專案，但其核心理念和技術架構仍有進一步發展的潛力：
+
+* **擴展貓咪資料庫與地理範圍：** 可以與更多地區的愛貓人士或動保組織合作，將更多地方的特色貓咪納入辨識系統，打造更廣泛的「貓咪地圖」。
+
+* **增強社群互動功能：** 例如允許用戶為已辨識的貓咪補充新的故事、照片或狀態，形成一個愛貓人士的互動社群。
+
+* **結合AR技術：** 未來可探索將AR技術融入，當遊客透過手機鏡頭對準貓咪時，即可實時顯示其AR形象和相關資訊，提升互動的沉浸感。
+
+* **公益結合：** 可以與動物保護組織合作，在用戶與貓咪互動的過程中，適時引導用戶了解相關的領養資訊或進行小額捐款，為專案賦予更深層的社會價值。
+
+**DeepWiki:** <https://deepwiki.com/sheep52031/meowda>5:["$","$L11",null,{"lang":"zh","dictionary":"$4:props:dictionary","project":{"title":"Meowda：AI賦能的猴硐貓咪地圖尋訪與故事互動系統","date":"2023","image":"/project2/mewda01.PNG","shortDescription":"領導團隊開發的LINE聊天機器人，透過AI辨識猴硐特定貓咪，結合故事與遊戲化地圖，提升遊客互動體驗。","technologies":["Python","Flask","FastAPI","YOLOv7","Docker","Google Cloud Run","MongoDB","LINE Messaging API","Pydantic"],"githubLink":"https://github.com/sheep52031/meowda","projectDocumentUrl":"https://deepwiki.com/sheep52031/meowda","architectureDiagramUrl":"/project2/mewda_archtisture.svg","demoLink":"","videoUrl":"https://www.youtube.com/watch?v=Eq3Okb1ZOJg&ab_channel=latte%E6%8B%BF%E9%90%B5%E5%89%B5%E6%84%8F","id":2,"markdownFile":"meowda","markdownContent":"$12"}}]
