@@ -1,0 +1,67 @@
+1:"$Sreact.fragment"
+2:I[87555,[],""]
+3:I[31295,[],""]
+6:I[59665,[],"OutletBoundary"]
+9:I[59665,[],"ViewportBoundary"]
+b:I[59665,[],"MetadataBoundary"]
+d:I[26614,[],""]
+:HL["/_next/static/media/028c0d39d2e8f589-s.p.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/5b01f339abf2f1a5.p.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/css/6ad9841b43ad2bc9.css","style"]
+:HL["/_next/static/css/5b73e0e0e8b63b34.css","style"]
+0:{"P":null,"b":"cMwqGn4ZtiRSJlGA1EeDv","p":"","c":["","en","portfolio","3"],"i":false,"f":[[["",{"children":[["lang","en","d"],{"children":["portfolio",{"children":[["id","3","d"],{"children":["__PAGE__",{}]}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/6ad9841b43ad2bc9.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/css/5b73e0e0e8b63b34.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":["$","body",null,{"className":"__variable_fb8f2c __variable_f910ec font-sans antialiased","children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]]}],{"children":[["lang","en","d"],["$","$1","c",{"children":[null,"$L4"]}],{"children":["portfolio",["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["id","3","d"],["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L5","$undefined",null,["$","$L6",null,{"children":["$L7","$L8",null]}]]}],{},null,false]},null,false]},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","XtxUOeLqnjwVYBdHLUDVe",{"children":[["$","$L9",null,{"children":"$La"}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],["$","$Lb",null,{"children":"$Lc"}]]}],false]],"m":"$undefined","G":["$d","$undefined"],"s":false,"S":true}
+e:I[30,["263","static/chunks/263-03d8524f879e63fe.js","874","static/chunks/874-a47e53a6366411c4.js","550","static/chunks/550-1d9eccb9c1673264.js","160","static/chunks/app/%5Blang%5D/layout-7f1016ca9fe0f1d2.js"],"LanguageProvider"]
+f:I[66146,["263","static/chunks/263-03d8524f879e63fe.js","874","static/chunks/874-a47e53a6366411c4.js","550","static/chunks/550-1d9eccb9c1673264.js","160","static/chunks/app/%5Blang%5D/layout-7f1016ca9fe0f1d2.js"],"default"]
+10:I[57323,["263","static/chunks/263-03d8524f879e63fe.js","874","static/chunks/874-a47e53a6366411c4.js","550","static/chunks/550-1d9eccb9c1673264.js","160","static/chunks/app/%5Blang%5D/layout-7f1016ca9fe0f1d2.js"],"Toaster"]
+4:["$","$Le",null,{"initialLocale":"en","dictionary":{"appName":"John Doe","nav":{"resume":"Resume","autobiography":"Autobiography","portfolio":"Side Projects","certifications":"Certifications","home":"Home","experience":"Experience","education":"Education","skills":"Skills","projects":"Projects","contact":"Contact"},"header":{"downloadPdf":"Download PDF","language":"Language","openMenu":"Open menu"},"resume":{"title":"My Awesome Resume","name":"John Doe","jobTitle":"Senior Software Engineer","summaryTitle":"Summary","experienceTitle":"Work Experience","educationTitle":"Education","skillsTitle":"Skills","projectsTitle":"Projects","contactTitle":"Contact Information","contactEmail":"Email","contactPhone":"Phone","contactLocation":"Location","contactLinkedIn":"LinkedIn","contactGitHub":"GitHub","contactPortfolio":"Portfolio"},"footer":{"text":"© 2025 Jason Lin. All rights reserved."},"languageSwitcher":{"english":"English","chinese":"中文 (Chinese)","label":"中 / EN"},"autobiographyPage":{"title":"Autobiography","comingSoon":"Content for the autobiography page is coming soon."},"portfolioPage":{"title":"Portfolio","comingSoon":"Content for the portfolio page is coming soon.","notFound":"Project not found"},"certificatesPage":{"title":"Professional Certificates","intro":"Here are the certifications I've completed recently. They showcase my continued investment in AI systems and applied machine learning.","issued":"Issued","issuer":"Issuer","viewBadge":"View Badge"}},"children":[["$","div",null,{"className":"flex min-h-screen flex-col bg-background text-foreground","children":[["$","$Lf",null,{"appName":"Lin, Jia-Ren (Jason Lin)"}],["$","main",null,{"className":"flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8","children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]}],["$","footer",null,{"className":"py-6 text-center text-sm text-muted-foreground border-t","children":"© 2025 Jason Lin. All rights reserved."}]]}],["$","$L10",null,{}]]}]
+a:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+7:null
+8:null
+c:[["$","title","0",{"children":"Real Talka：企業級 AI 語音銷售助手 | Jason's Portfolio"}],["$","meta","1",{"name":"description","content":"打造多租戶 B2B SaaS 平台，整合語音辨識、企業知識庫與多通路交互，協助業務團隊以 AI 助手提升銷售效率。"}],["$","link","2",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"}]]
+11:I[36074,["146","static/chunks/146-efce2f53fdf16d38.js","263","static/chunks/263-03d8524f879e63fe.js","63","static/chunks/63-4940dcd7157e5bda.js","346","static/chunks/app/%5Blang%5D/portfolio/%5Bid%5D/page-747b2c74a78da893.js"],"default"]
+12:T604,
+
+# Real Talka: AI Voice Sales for Enterprises
+
+
+## Context
+
+- Designed for B2B sales teams that need an AI copilot capable of live presentations, knowledge-grounded Q&A, and accurate citation.
+
+- Supports multi-tenant operations to host multiple enterprise clients on a single backend while keeping data isolated.
+
+
+## Platform Highlights
+
+1. **Intelligent Deck Narration**
+   - AI agents drive slide presentations, syncing audio narration and visuals based on customer questions.
+
+2. **Enterprise Knowledge Engine**
+   - Documents are ingested, parsed, and indexed; agents can answer questions referencing company-specific content.
+
+3. **Evidence Spans**
+   - Every response includes precise citations (PDF page, paragraph coordinates) to maintain trust.
+
+4. **Omnichannel Voice Interfaces**
+   - WebRTC rooms, SIP telephony, and playground demos reuse the same orchestration layer.
+
+
+## Implementation Details
+
+- **Data Isolation**: PostgreSQL Row Level Security enforces tenant separation.
+
+- **Admin Console**: Payload CMS powers document uploads, AI configuration, and deck templates.
+
+- **Voice Stack**: Combines ASR, TTS, retrieval, and LLM orchestration via FastAPI + Pydantic AI.
+
+
+## Business Value
+
+- Lets enterprises spin up AI sales reps without months of onboarding.
+
+- Citation-first design meets compliance needs in regulated industries (construction, finance, education).
+
+
+## Current Status
+
+- Development started in Aug 2025; MVP architecture and tenant scaffolding are complete, currently piloting with early customers.5:["$","$L11",null,{"lang":"en","dictionary":"$4:props:dictionary","project":{"title":"Real Talka: Enterprise AI Voice Sales Assistant","date":"2025","image":"/project2/real-talka.png","shortDescription":"A multi-tenant B2B SaaS platform that brings AI agents into voice-based sales calls, combining speech, knowledge management, and omnichannel delivery.","technologies":["Python","FastAPI","PostgreSQL","WebRTC","SIP","LLM API","Pydantic AI","Payload CMS","RLS"],"period":"Aug 2025 – Present","periodEn":"Aug 2025 – Present","timeline":"2025-08","award":"Taipei Youth Bureau 2025 Public Policy Award","awardEn":"Taipei Youth Bureau 2025 Public Policy Award","awardDescription":"AI Voice Agent Application Demo for 165 Anti-Fraud Initiative","awardImages":["/real-talka-award-1.jpg","/real-talka-award-2.jpg"],"githubLink":"","projectDocumentUrl":"","architectureDiagramUrl":"","demoLink":"","videoUrl":"https://youtu.be/fh3QoFWl8ng","screenshots":[],"id":3,"markdownFile":"real_talka","periodZh":"2025年8月 – 進行中","awardZh":"台北市青年局 2025 年公共政策獎","markdownContent":"$12"}}]

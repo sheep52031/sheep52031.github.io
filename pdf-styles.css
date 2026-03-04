@@ -1,0 +1,208 @@
+/* PDF 專用樣式 */
+
+/* 全局防止內容被切割的規則 */
+#pdf-template h1, 
+#pdf-template h2, 
+#pdf-template h3, 
+#pdf-template h4, 
+#pdf-template h5, 
+#pdf-template h6 { 
+  page-break-after: avoid !important; 
+  break-after: avoid !important;
+  page-break-inside: avoid !important; 
+  break-inside: avoid !important;
+  orphans: 4; 
+  widows: 4;
+  margin-bottom: 0.7em;
+}
+
+/* 確保標題下至少有文字跟著標題一起，避免標題在頁尾 */
+#pdf-template h1::after, 
+#pdf-template h2::after, 
+#pdf-template h3::after { 
+  content: ""; 
+  display: block; 
+  height: 1.2em;
+  page-break-after: avoid;
+  break-after: avoid;
+}
+
+/* 避免段落被分割到不同頁面 */
+#pdf-template p, 
+#pdf-template [data-pdf-no-break="true"] { 
+  page-break-inside: avoid !important; 
+  break-inside: avoid !important;
+  orphans: 6; 
+  widows: 6;
+  margin-bottom: 0.5em;
+  white-space: normal !important;
+  word-wrap: break-word !important;
+  word-break: normal !important;
+}
+
+/* 確保段落中的文字不被切斷 */
+#pdf-template p a, 
+#pdf-template p span, 
+#pdf-template a, 
+#pdf-template span {
+  white-space: normal !important;
+  word-wrap: break-word !important;
+  word-break: normal !important;
+  display: inline !important;
+}
+
+/* 強制工作經歷項作為一個整體 */
+#pdf-template .work-experience-entry, 
+#pdf-template .education-entry, 
+#pdf-template .project-entry { 
+  page-break-inside: avoid !important; 
+  break-inside: avoid !important;
+  position: relative;
+  display: block;
+  max-width: 100%;
+  width: 100%;
+}
+
+#pdf-template.en .work-experience-entry,
+#pdf-template.en .education-entry,
+#pdf-template.en .project-entry {
+  margin-bottom: 1.5em;
+}
+
+/* 英文版特別規則 */
+#pdf-template.en .work-experience-entry, 
+#pdf-template.en #work-experience > div {
+  display: block;
+  page-break-inside: avoid !important;
+  break-inside: avoid !important;
+}
+
+#pdf-template.en #professional-summary, 
+#pdf-template.en #work-experience {
+  break-before: avoid;
+  page-break-before: avoid;
+  margin-top: 0;
+}
+
+/* 強制分頁 */
+#pdf-template .pdf-page-break {
+  break-before: page;
+  page-break-before: always;
+  height: 1px;
+}
+
+#pdf-template.en #education, 
+#pdf-template.en #project-experience, 
+#pdf-template.en #technical-skills {
+  break-before: page;
+  page-break-before: always;
+  margin-top: 0.5em;
+  padding-top: 0.5em;
+}
+
+#pdf-template.en .work-experience-title {
+  page-break-after: avoid;
+  break-after: avoid;
+  margin-bottom: 0.3em;
+}
+
+/* 確保技能部分排版正確 */
+#pdf-template #technical-skills, 
+#pdf-template .skills-section {
+  break-inside: avoid !important;
+  page-break-inside: avoid !important;
+  width: 100%;
+  display: block;
+  padding-top: 0.05em !important; /* Skills 標題與表格距離極小化 */
+  margin-bottom: 0.2em !important;
+}
+
+/* 技能表格樣式 */
+#pdf-template .skills-table {
+  width: 100% !important;
+  border-collapse: separate !important;
+  border-spacing: 2px 1px !important;
+  table-layout: fixed !important;
+  margin-bottom: 0.25em !important;
+}
+
+#pdf-template .skills-table td {
+  vertical-align: top !important;
+  padding: 1px 4px !important;
+  break-inside: avoid !important;
+  page-break-inside: avoid !important;
+  width: 25% !important;
+}
+
+/* 技能類別標題 */
+#pdf-template #technical-skills h3 {
+  margin-bottom: 0.1em !important;
+  font-weight: 700 !important;
+  font-size: 1.01em !important;
+  border-bottom: 1px solid #bbb !important;
+  padding-bottom: 1px !important;
+  white-space: normal !important;
+  word-break: break-word !important;
+  break-after: avoid !important;
+  page-break-after: avoid !important;
+  margin-top: 0 !important;
+}
+
+/* 技能列表中的項目保持在一起 */
+#pdf-template .skills-section li,
+#pdf-template #technical-skills li {
+  page-break-inside: avoid !important;
+  break-inside: avoid !important;
+  display: block !important;
+  margin-bottom: 0.18em !important;
+  white-space: normal !important;
+  word-wrap: break-word !important;
+  word-break: break-word !important;
+  font-size: 0.97em !important;
+  line-height: 1.3 !important;
+}
+
+/* 技能列表容器 */
+#pdf-template #technical-skills ul,
+#pdf-template .skills-section ul {
+  margin-left: 0 !important;
+  padding-left: 0.7em !important;
+  margin-bottom: 0.15em !important;
+  break-inside: avoid !important;
+  page-break-inside: avoid !important;
+}
+
+/* 中文版特定樣式 */
+#pdf-template.zh #technical-skills h3 {
+  font-size: 1em !important;
+}
+
+#pdf-template.zh #technical-skills li {
+  font-size: 0.95em !important;
+}
+
+/* 英文版特定樣式 */
+#pdf-template.en #technical-skills h3 {
+  font-size: 1em !important;
+}
+
+/* 確保列表不被分割 */
+#pdf-template ul, 
+#pdf-template ol {
+  margin: 0 !important;
+  padding-left: 1em !important;
+  break-inside: avoid !important;
+  page-break-inside: avoid !important;
+  margin-bottom: 0.5em !important;
+}
+
+#pdf-template li { 
+  page-break-inside: avoid !important; 
+  break-inside: avoid !important;
+}
+
+/* 確保聯繫信息不被分割 */
+#pdf-template .contact-info {
+  page-break-inside: avoid !important;
+  break-inside: avoid !important;
+}
